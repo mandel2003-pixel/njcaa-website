@@ -1,0 +1,1997 @@
+/* ============================================
+   NJCAA PAGES STYLES
+   News, Teams, Championships, Membership, About, Divisions
+   ============================================ */
+
+/* ============================================
+   PAGE HERO
+   ============================================ */
+
+.page-hero {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.page-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4);
+}
+
+.page-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 51, 102, 0.8) 0%, rgba(0, 26, 51, 0.9) 100%);
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.page-hero-logo {
+    margin-bottom: 20px;
+}
+
+.page-hero-logo img {
+    height: 100px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    animation: float 3s ease-in-out infinite;
+}
+
+.page-hero-logo.large img {
+    height: 130px;
+}
+
+.page-hero-content h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.page-hero-content p {
+    font-size: 18px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   BREADCRUMB
+   ============================================ */
+
+.breadcrumb {
+    background: var(--njcaa-gray);
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.breadcrumb-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+}
+
+.breadcrumb a {
+    color: var(--njcaa-blue);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    color: var(--njcaa-text-light);
+}
+
+.breadcrumb .current {
+    font-weight: 500;
+    color: var(--njcaa-dark-gray);
+}
+
+/* ============================================
+   PAGE CONTENT LAYOUT
+   ============================================ */
+
+.page-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 50px 24px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+}
+
+.page-content.full-width {
+    display: block;
+}
+
+.content-container {
+    min-width: 0;
+}
+
+.content-container.wide {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+
+.page-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sidebar-widget {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-widget h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--njcaa-blue);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-links {
+    list-style: none;
+}
+
+.sidebar-links li {
+    margin-bottom: 8px;
+}
+
+.sidebar-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    color: var(--njcaa-dark-gray);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: var(--transition);
+    font-size: 14px;
+}
+
+.sidebar-links a:hover {
+    background: var(--njcaa-gray);
+    color: var(--njcaa-blue);
+}
+
+.sidebar-links a i {
+    color: var(--njcaa-accent);
+    width: 16px;
+}
+
+.sidebar-social {
+    display: flex;
+    gap: 10px;
+}
+
+.social-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    transition: var(--transition);
+}
+
+.social-btn.twitter { background: #000; }
+.social-btn.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-btn.facebook { background: #1877f2; }
+.social-btn.youtube { background: #ff0000; }
+
+.social-btn:hover {
+    transform: translateY(-3px);
+}
+
+.sponsor-widget {
+    text-align: center;
+}
+
+.sidebar-logo {
+    width: 80px;
+    margin-bottom: 12px;
+}
+
+.sponsor-widget p {
+    font-size: 12px;
+    color: var(--njcaa-text-light);
+}
+
+/* ============================================
+   NEWS PAGE
+   ============================================ */
+
+.featured-article {
+    margin-bottom: 40px;
+}
+
+.featured-card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.featured-image {
+    height: 350px;
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.featured-content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-badge {
+    display: inline-block;
+    background: var(--njcaa-blue);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.featured-content h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--njcaa-dark-gray);
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.featured-content p {
+    color: var(--njcaa-text-light);
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.featured-meta {
+    font-size: 13px;
+    color: var(--njcaa-text-light);
+}
+
+.news-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--njcaa-blue);
+    border-color: var(--njcaa-blue);
+    color: white;
+}
+
+.news-grid-full {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.page-btn {
+    width: 44px;
+    height: 44px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.page-btn:hover:not(:disabled),
+.page-btn.active {
+    background: var(--njcaa-blue);
+    border-color: var(--njcaa-blue);
+    color: white;
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   TEAMS PAGE
+   ============================================ */
+
+.division-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.division-tab {
+    padding: 14px 28px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.division-tab:hover,
+.division-tab.active {
+    background: var(--njcaa-blue);
+    border-color: var(--njcaa-blue);
+    color: white;
+}
+
+.teams-search {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.teams-search i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--njcaa-text-light);
+}
+
+.teams-search input {
+    width: 100%;
+    padding: 16px 20px 16px 50px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: var(--transition);
+}
+
+.teams-search input:focus {
+    outline: none;
+    border-color: var(--njcaa-accent);
+}
+
+.conference-section {
+    margin-bottom: 50px;
+}
+
+.conference-header {
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, #004080 100%);
+    color: white;
+    padding: 20px 24px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.conference-header.d3 {
+    background: linear-gradient(135deg, #2d3436 0%, #000 100%);
+}
+
+.conference-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.team-count {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 24px;
+    background: var(--njcaa-gray);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.team-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    display: flex;
+}
+
+.team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.team-logo-container {
+    width: 100px;
+    background: var(--njcaa-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.team-logo-large {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.team-logo-placeholder {
+    width: 60px;
+    height: 60px;
+    background: var(--njcaa-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.team-logo-placeholder.large {
+    width: 80px;
+    height: 80px;
+    font-size: 18px;
+}
+
+.team-logo-placeholder.xlarge {
+    width: 100px;
+    height: 100px;
+    font-size: 22px;
+}
+
+.team-info-card {
+    padding: 16px;
+    flex: 1;
+}
+
+.team-info-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--njcaa-dark-gray);
+    margin-bottom: 4px;
+}
+
+.team-location {
+    font-size: 12px;
+    color: var(--njcaa-text-light);
+    margin-bottom: 4px;
+}
+
+.team-nickname {
+    font-size: 13px;
+    color: var(--njcaa-blue);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.team-stats {
+    font-size: 11px;
+    color: var(--njcaa-text-light);
+    margin-bottom: 10px;
+}
+
+.team-link {
+    font-size: 13px;
+    color: var(--njcaa-blue);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.team-link:hover {
+    text-decoration: underline;
+}
+
+.teams-map-section {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.teams-map-section h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    margin-bottom: 24px;
+    color: var(--njcaa-dark-gray);
+}
+
+.map-placeholder {
+    background: var(--njcaa-gray);
+    border-radius: var(--border-radius);
+    padding: 80px;
+    color: var(--njcaa-text-light);
+}
+
+.map-placeholder i {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: var(--njcaa-blue);
+}
+
+/* ============================================
+   CHAMPIONSHIPS PAGE
+   ============================================ */
+
+.championship-hero {
+    position: relative;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #001428 0%, #003366 50%, #001428 100%);
+    overflow: hidden;
+}
+
+.championship-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1920') center/cover;
+    opacity: 0.2;
+}
+
+.championship-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+}
+
+.champ-logo {
+    height: 120px;
+    margin-bottom: 24px;
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.4));
+    animation: float 3s ease-in-out infinite;
+}
+
+.championship-hero-content h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 8px;
+    margin-bottom: 8px;
+}
+
+.championship-hero-content h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+}
+
+.champ-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--njcaa-accent), var(--njcaa-gold));
+    margin: 0 auto 16px;
+    border-radius: 2px;
+}
+
+.championship-hero-content p {
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+.section-header-fancy {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, var(--njcaa-accent) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    color: white;
+    font-size: 24px;
+}
+
+.section-header-fancy h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--njcaa-dark-gray);
+    letter-spacing: 1px;
+}
+
+.section-header-fancy p {
+    color: var(--njcaa-text-light);
+    margin-top: 8px;
+}
+
+.championship-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.championship-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.champ-card-header {
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, #004080 100%);
+    color: white;
+    padding: 20px 24px;
+    text-align: center;
+}
+
+.division-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.division-badge.d3 {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.champ-card-header h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.champ-card-body {
+    padding: 30px;
+}
+
+.matchup, .final-score {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 24px;
+}
+
+.matchup .team, .final-score .team {
+    text-align: center;
+}
+
+.matchup .team h4, .final-score .team h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 12px;
+    color: var(--njcaa-dark-gray);
+}
+
+.matchup .team p, .final-score .team p {
+    font-size: 13px;
+    color: var(--njcaa-text-light);
+}
+
+.vs {
+    text-align: center;
+}
+
+.vs span {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--njcaa-blue);
+}
+
+.game-date {
+    font-size: 12px;
+    color: var(--njcaa-text-light);
+    margin-top: 4px;
+}
+
+.final-score .team .score {
+    font-family: 'Oswald', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--njcaa-text-light);
+    display: block;
+    margin-top: 12px;
+}
+
+.final-score .team.winner .score {
+    color: var(--njcaa-blue);
+}
+
+.champion-banner {
+    background: linear-gradient(135deg, var(--njcaa-gold), #d4af37);
+    color: #1a1a1a;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.game-info {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.game-info p {
+    font-size: 13px;
+    color: var(--njcaa-text-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-championship {
+    display: block;
+    text-align: center;
+    padding: 14px 24px;
+    background: var(--njcaa-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-championship:hover {
+    background: var(--njcaa-dark-blue);
+    transform: translateY(-2px);
+}
+
+/* Bracket */
+.bracket-section {
+    margin-bottom: 60px;
+}
+
+.bracket-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px;
+    background: var(--njcaa-gray);
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+}
+
+.bracket-round {
+    text-align: center;
+}
+
+.bracket-round h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    color: var(--njcaa-text-light);
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+}
+
+.bracket-game {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 16px;
+    min-width: 200px;
+}
+
+.bracket-team {
+    padding: 12px 16px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+}
+
+.bracket-team:last-child {
+    border-bottom: none;
+}
+
+.bracket-team span {
+    font-weight: 700;
+    color: var(--njcaa-blue);
+}
+
+.bracket-team.winner {
+    background: rgba(0, 51, 102, 0.05);
+    font-weight: 600;
+}
+
+.bracket-game.final {
+    border: 2px solid var(--njcaa-gold);
+}
+
+.bracket-game .game-time {
+    display: block;
+    padding: 8px;
+    background: var(--njcaa-gray);
+    font-size: 11px;
+    color: var(--njcaa-text-light);
+    text-align: center;
+}
+
+.bracket-round.championship h4 {
+    color: var(--njcaa-blue);
+    font-weight: 700;
+}
+
+/* Past Champions */
+.champions-timeline {
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+.champion-year {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.year-badge {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, var(--njcaa-accent) 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.champion-info h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--njcaa-dark-gray);
+}
+
+.champion-info p {
+    font-size: 13px;
+    color: var(--njcaa-text-light);
+    margin-top: 2px;
+}
+
+.score-final {
+    font-size: 12px;
+    color: var(--njcaa-accent);
+    margin-top: 4px;
+}
+
+.view-all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--njcaa-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.view-all-link:hover {
+    gap: 12px;
+}
+
+/* Info Cards */
+.championship-info-section {
+    margin-top: 60px;
+}
+
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.info-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.info-card i {
+    font-size: 36px;
+    color: var(--njcaa-blue);
+    margin-bottom: 16px;
+}
+
+.info-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--njcaa-dark-gray);
+}
+
+.info-card p {
+    font-size: 13px;
+    color: var(--njcaa-text-light);
+    margin-bottom: 16px;
+}
+
+.info-card a {
+    color: var(--njcaa-blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.info-card a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   MEMBERSHIP PAGE
+   ============================================ */
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.benefit-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 32px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.benefit-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, var(--njcaa-accent) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 28px;
+    color: white;
+}
+
+.benefit-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--njcaa-dark-gray);
+}
+
+.benefit-card p {
+    font-size: 14px;
+    color: var(--njcaa-text-light);
+    line-height: 1.6;
+}
+
+/* Membership Tiers */
+.tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.tier-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.tier-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.tier-card.featured {
+    border-color: var(--njcaa-blue);
+}
+
+.tier-badge {
+    position: absolute;
+    top: -1px;
+    right: 20px;
+    background: var(--njcaa-gold);
+    color: #1a1a1a;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 0 0 8px 8px;
+}
+
+.tier-header {
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, #004080 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.tier-header h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.tier-header p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.tier-body {
+    padding: 30px;
+}
+
+.tier-body ul {
+    list-style: none;
+    margin-bottom: 24px;
+}
+
+.tier-body li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tier-body li i {
+    color: #28a745;
+}
+
+.tier-btn {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    border: 2px solid var(--njcaa-blue);
+    color: var(--njcaa-blue);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.tier-btn:hover,
+.tier-btn.primary {
+    background: var(--njcaa-blue);
+    color: white;
+}
+
+/* Steps */
+.steps-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 200px;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, var(--njcaa-accent) 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.step-content h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--njcaa-dark-gray);
+}
+
+.step-content p {
+    font-size: 13px;
+    color: var(--njcaa-text-light);
+}
+
+.step-connector {
+    width: 60px;
+    height: 2px;
+    background: #e0e0e0;
+    margin: 0 10px;
+}
+
+.cta-box {
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, #004080 100%);
+    color: white;
+    padding: 50px;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.cta-logo {
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.cta-box h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.cta-box p {
+    opacity: 0.9;
+    margin-bottom: 24px;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    color: var(--njcaa-blue);
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Stats Section */
+.membership-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+}
+
+.stat-item {
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, #004080 100%);
+    color: white;
+    padding: 40px 24px;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ============================================
+   ABOUT PAGE
+   ============================================ */
+
+.about-mission {
+    margin-bottom: 60px;
+}
+
+.mission-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.mission-text h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 36px;
+    color: var(--njcaa-blue);
+    margin-bottom: 20px;
+}
+
+.mission-text .lead {
+    font-size: 18px;
+    color: var(--njcaa-dark-gray);
+    margin-bottom: 16px;
+    line-height: 1.7;
+}
+
+.mission-text p {
+    color: var(--njcaa-text-light);
+    line-height: 1.8;
+}
+
+.mission-image {
+    text-align: center;
+}
+
+.mission-logo {
+    width: 250px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.value-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 32px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.value-card i {
+    font-size: 40px;
+    color: var(--njcaa-blue);
+    margin-bottom: 20px;
+}
+
+.value-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--njcaa-dark-gray);
+}
+
+.value-card p {
+    font-size: 14px;
+    color: var(--njcaa-text-light);
+    line-height: 1.6;
+}
+
+/* History Timeline */
+.history-timeline {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    position: relative;
+}
+
+.history-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--njcaa-blue), var(--njcaa-accent));
+    border-radius: 2px;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.timeline-year {
+    width: 100px;
+    height: 40px;
+    background: var(--njcaa-blue);
+    color: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.timeline-content {
+    background: white;
+    padding: 20px 24px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    flex: 1;
+}
+
+.timeline-content h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--njcaa-dark-gray);
+    margin-bottom: 6px;
+}
+
+.timeline-content p {
+    font-size: 14px;
+    color: var(--njcaa-text-light);
+}
+
+/* Leadership */
+.leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.leader-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 32px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.leader-photo {
+    width: 100px;
+    height: 100px;
+    background: var(--njcaa-gray);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 40px;
+    color: var(--njcaa-blue);
+}
+
+.leader-card h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--njcaa-dark-gray);
+}
+
+.leader-card p {
+    font-size: 14px;
+    color: var(--njcaa-text-light);
+}
+
+/* Contact */
+.about-contact {
+    margin-top: 40px;
+}
+
+.contact-card {
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, #004080 100%);
+    color: white;
+    padding: 50px;
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-info h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    opacity: 0.9;
+}
+
+.contact-logo img {
+    height: 120px;
+}
+
+/* ============================================
+   DIVISION PAGES
+   ============================================ */
+
+.division-hero {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.division-hero.d1 {
+    background: linear-gradient(135deg, #001428 0%, #003366 50%, #001428 100%);
+}
+
+.division-hero.d3 {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d3436 50%, #1a1a1a 100%);
+}
+
+.division-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1920') center/cover;
+    opacity: 0.15;
+}
+
+.division-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+}
+
+.division-logo {
+    height: 100px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.4));
+    animation: float 3s ease-in-out infinite;
+}
+
+.division-hero-content h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    margin-bottom: 0;
+}
+
+.division-hero-content h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 8px;
+    opacity: 0.8;
+    margin-bottom: 16px;
+}
+
+.division-hero-content p {
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+/* Division Overview */
+.division-overview {
+    margin-bottom: 60px;
+}
+
+.overview-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.overview-text h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    color: var(--njcaa-blue);
+    margin-bottom: 20px;
+}
+
+.overview-text p {
+    color: var(--njcaa-text-light);
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+.overview-stats {
+    display: flex;
+    gap: 30px;
+}
+
+.overview-stat {
+    text-align: center;
+}
+
+.stat-num {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--njcaa-blue);
+}
+
+.stat-text {
+    font-size: 13px;
+    color: var(--njcaa-text-light);
+}
+
+.overview-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Rankings */
+.rankings-section {
+    margin-bottom: 60px;
+}
+
+.rankings-table {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px;
+}
+
+.ranking-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 100px 80px;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #eee;
+}
+
+.ranking-row.header {
+    background: var(--njcaa-blue);
+    color: white;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.ranking-row.champion {
+    background: linear-gradient(90deg, rgba(196, 160, 82, 0.1), transparent);
+}
+
+.ranking-row .rank {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--njcaa-blue);
+}
+
+.ranking-row.champion .rank {
+    color: var(--njcaa-gold);
+}
+
+.ranking-row .team strong {
+    display: block;
+    font-weight: 600;
+    color: var(--njcaa-dark-gray);
+}
+
+.ranking-row .team small {
+    font-size: 12px;
+    color: var(--njcaa-text-light);
+}
+
+.ranking-row .record {
+    font-weight: 600;
+}
+
+.ranking-row .prev {
+    color: var(--njcaa-text-light);
+}
+
+/* Conference List */
+.conference-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.conference-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    background: white;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--njcaa-dark-gray);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.conference-item:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
+}
+
+.conf-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--njcaa-blue);
+}
+
+.conf-full {
+    font-size: 13px;
+    color: var(--njcaa-text-light);
+    flex: 1;
+    margin-left: 20px;
+}
+
+/* Current Champion */
+.current-champion {
+    margin-bottom: 60px;
+}
+
+.champion-banner-large {
+    background: linear-gradient(135deg, var(--njcaa-gold), #d4af37);
+    border-radius: var(--border-radius);
+    padding: 40px;
+}
+
+.champion-content {
+    text-align: center;
+}
+
+.champion-label {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+}
+
+.champion-team {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.champion-info h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.champion-info p {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.champion-info .final-score {
+    font-size: 14px;
+    margin-top: 12px;
+    opacity: 0.9;
+}
+
+/* Why D3 */
+.d3-benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.d3-benefit {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 32px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.d3-benefit i {
+    font-size: 36px;
+    color: var(--njcaa-blue);
+    margin-bottom: 16px;
+}
+
+.d3-benefit h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--njcaa-dark-gray);
+}
+
+.d3-benefit p {
+    font-size: 13px;
+    color: var(--njcaa-text-light);
+}
+
+/* Division CTA */
+.division-cta {
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, #004080 100%);
+    border-radius: var(--border-radius);
+    padding: 60px;
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+}
+
+.division-cta.d3 {
+    background: linear-gradient(135deg, #2d3436 0%, #000 100%);
+}
+
+.division-cta .cta-logo {
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.division-cta h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.division-cta p {
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.cta-buttons .cta-btn {
+    padding: 14px 28px;
+}
+
+.cta-buttons .cta-btn.primary {
+    background: white;
+    color: var(--njcaa-blue);
+}
+
+.cta-buttons .cta-btn:not(.primary) {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.cta-buttons .cta-btn:not(.primary):hover {
+    background: white;
+    color: var(--njcaa-blue);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .page-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-sidebar {
+        display: none;
+    }
+    
+    .championship-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefits-grid,
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tiers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .overview-content,
+    .mission-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .conference-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .membership-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .d3-benefits {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hero {
+        height: 300px;
+    }
+    
+    .page-hero-content h1 {
+        font-size: 36px;
+    }
+    
+    .page-hero-logo img {
+        height: 70px;
+    }
+    
+    .news-grid-full {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefits-grid,
+    .values-grid,
+    .d3-benefits {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .leadership-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .steps-container {
+        flex-direction: column;
+    }
+    
+    .step-connector {
+        width: 2px;
+        height: 30px;
+        margin: 10px 0;
+    }
+    
+    .contact-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-logo {
+        margin-top: 30px;
+    }
+    
+    .division-hero-content h1 {
+        font-size: 42px;
+    }
+    
+    .bracket-container {
+        flex-direction: column;
+    }
+    
+    .champion-team {
+        flex-direction: column;
+    }
+    
+    .membership-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+}

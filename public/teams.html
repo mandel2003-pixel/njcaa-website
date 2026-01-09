@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams | NJCAA Football</title>
+    <link rel="icon" type="image/png" href="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <span class="top-bar-logo">NJCAA</span>
+            <nav class="top-bar-nav">
+                <a href="/">NJCAA</a>
+                <a href="#">Stats</a>
+                <a href="#">Foundation</a>
+                <a href="/championships.html">Championships</a>
+                <a href="#">Network</a>
+                <a href="#">Compliance</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <a href="/"><img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="main-logo"></a>
+            </div>
+            <nav class="main-nav">
+                <a href="/sports.html" class="nav-link">SPORTS <i class="fas fa-chevron-down"></i></a>
+                <a href="/championships.html" class="nav-link">CHAMPIONSHIPS</a>
+                <a href="/membership.html" class="nav-link">MEMBERSHIP <i class="fas fa-chevron-down"></i></a>
+                <a href="/about.html" class="nav-link">ABOUT <i class="fas fa-chevron-down"></i></a>
+                <a href="#" class="nav-link">LINKS <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-icons">
+                    <a href="#"><i class="fas fa-th"></i></a>
+                    <a href="#"><i class="fas fa-search"></i></a>
+                </div>
+            </nav>
+        </div>
+        <div class="sub-header">
+            <div class="sub-header-content">
+                <span class="sport-title">FOOTBALL</span>
+                <nav class="sub-nav">
+                    <a href="/news.html">NEWS</a>
+                    <a href="/teams.html" class="active">TEAMS</a>
+                    <a href="/division1.html">DIVISION I</a>
+                    <a href="/division3.html">DIVISION III</a>
+                    <a href="/championships.html">CHAMPIONSHIPS</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=1920')"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-content">
+            <div class="page-hero-logo">
+                <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA">
+            </div>
+            <h1>FOOTBALL TEAMS</h1>
+            <p>Explore all NJCAA Football programs across the nation</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <span>/</span>
+            <a href="#">Sports</a>
+            <span>/</span>
+            <a href="#">Football</a>
+            <span>/</span>
+            <span class="current">Teams</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="page-content full-width">
+        <div class="content-container wide">
+            <!-- Division Filter -->
+            <div class="division-tabs">
+                <button class="division-tab active" data-division="all">
+                    <i class="fas fa-football"></i> All Teams
+                </button>
+                <button class="division-tab" data-division="d1">
+                    <i class="fas fa-star"></i> Division I
+                </button>
+                <button class="division-tab" data-division="d3">
+                    <i class="fas fa-shield"></i> Division III
+                </button>
+            </div>
+
+            <!-- Search -->
+            <div class="teams-search">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search teams by name, location, or conference..." id="teamSearch">
+            </div>
+
+            <!-- Conference Sections -->
+            <div class="conferences-grid">
+                <!-- ICCAC Conference -->
+                <div class="conference-section">
+                    <div class="conference-header">
+                        <h2><i class="fas fa-trophy"></i> ICCAC</h2>
+                        <span class="team-count">Iowa Community College Athletic Conference</span>
+                    </div>
+                    <div class="teams-grid" id="iccacTeams">
+                        <div class="team-card">
+                            <div class="team-logo-container">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Iowa_Western_Reivers_logo.svg/1200px-Iowa_Western_Reivers_logo.svg.png" alt="Iowa Western" class="team-logo-large">
+                            </div>
+                            <div class="team-info-card">
+                                <h3>Iowa Western Community College</h3>
+                                <p class="team-location"><i class="fas fa-map-marker-alt"></i> Council Bluffs, IA</p>
+                                <p class="team-nickname">Reivers</p>
+                                <div class="team-stats">
+                                    <span><i class="fas fa-trophy"></i> 5x National Champs</span>
+                                </div>
+                                <a href="#" class="team-link">View Team <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KJCCC Conference -->
+                <div class="conference-section">
+                    <div class="conference-header">
+                        <h2><i class="fas fa-trophy"></i> KJCCC</h2>
+                        <span class="team-count">Kansas Jayhawk Community College Conference</span>
+                    </div>
+                    <div class="teams-grid" id="kjcccTeams">
+                        <div class="team-card">
+                            <div class="team-logo-container">
+                                <div class="team-logo-placeholder">HCC</div>
+                            </div>
+                            <div class="team-info-card">
+                                <h3>Hutchinson Community College</h3>
+                                <p class="team-location"><i class="fas fa-map-marker-alt"></i> Hutchinson, KS</p>
+                                <p class="team-nickname">Blue Dragons</p>
+                                <div class="team-stats">
+                                    <span><i class="fas fa-trophy"></i> 2x National Champs</span>
+                                </div>
+                                <a href="#" class="team-link">View Team <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-logo-container">
+                                <div class="team-logo-placeholder">GCCC</div>
+                            </div>
+                            <div class="team-info-card">
+                                <h3>Garden City Community College</h3>
+                                <p class="team-location"><i class="fas fa-map-marker-alt"></i> Garden City, KS</p>
+                                <p class="team-nickname">Broncbusters</p>
+                                <div class="team-stats">
+                                    <span><i class="fas fa-football"></i> Division I</span>
+                                </div>
+                                <a href="#" class="team-link">View Team <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SWJCFC Conference -->
+                <div class="conference-section">
+                    <div class="conference-header">
+                        <h2><i class="fas fa-trophy"></i> SWJCFC</h2>
+                        <span class="team-count">Southwest Junior College Football Conference</span>
+                    </div>
+                    <div class="teams-grid" id="swjcfcTeams">
+                        <div class="team-card">
+                            <div class="team-logo-container">
+                                <div class="team-logo-placeholder">TJC</div>
+                            </div>
+                            <div class="team-info-card">
+                                <h3>Tyler Junior College</h3>
+                                <p class="team-location"><i class="fas fa-map-marker-alt"></i> Tyler, TX</p>
+                                <p class="team-nickname">Apaches</p>
+                                <div class="team-stats">
+                                    <span><i class="fas fa-trophy"></i> 3x National Champs</span>
+                                </div>
+                                <a href="#" class="team-link">View Team <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MACCC Conference -->
+                <div class="conference-section">
+                    <div class="conference-header">
+                        <h2><i class="fas fa-trophy"></i> MACCC</h2>
+                        <span class="team-count">Mississippi Association of Community Colleges Conference</span>
+                    </div>
+                    <div class="teams-grid" id="macccTeams">
+                        <div class="team-card">
+                            <div class="team-logo-container">
+                                <div class="team-logo-placeholder">NWCC</div>
+                            </div>
+                            <div class="team-info-card">
+                                <h3>Northwest Mississippi CC</h3>
+                                <p class="team-location"><i class="fas fa-map-marker-alt"></i> Senatobia, MS</p>
+                                <p class="team-nickname">Rangers</p>
+                                <div class="team-stats">
+                                    <span><i class="fas fa-football"></i> Division I</span>
+                                </div>
+                                <a href="#" class="team-link">View Team <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Division III -->
+                <div class="conference-section">
+                    <div class="conference-header d3">
+                        <h2><i class="fas fa-shield"></i> DIVISION III</h2>
+                        <span class="team-count">NJCAA Division III Programs</span>
+                    </div>
+                    <div class="teams-grid" id="d3Teams">
+                        <div class="team-card">
+                            <div class="team-logo-container">
+                                <div class="team-logo-placeholder">COD</div>
+                            </div>
+                            <div class="team-info-card">
+                                <h3>College of DuPage</h3>
+                                <p class="team-location"><i class="fas fa-map-marker-alt"></i> Glen Ellyn, IL</p>
+                                <p class="team-nickname">Chaparrals</p>
+                                <div class="team-stats">
+                                    <span><i class="fas fa-trophy"></i> DIII Champion</span>
+                                </div>
+                                <a href="#" class="team-link">View Team <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teams Map (Optional) -->
+            <div class="teams-map-section">
+                <h2><i class="fas fa-map"></i> Find a Program Near You</h2>
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <p>Interactive map coming soon</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>NJCAA</h3>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p>©2026 NJCAA. All rights reserved.</p>
+            </div>
+            <div class="footer-logos">
+                <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="footer-logo">
+            </div>
+        </div>
+    </footer>
+
+    <!-- User Menu -->
+    <div class="user-menu" id="userMenu">
+        <button class="user-btn" id="userBtn"><i class="fas fa-user"></i></button>
+        <div class="user-dropdown" id="userDropdown">
+            <div id="loggedOut">
+                <a href="/auth/discord" class="discord-login"><i class="fab fa-discord"></i> Login with Discord</a>
+            </div>
+            <div id="loggedIn" style="display: none;">
+                <div class="user-info">
+                    <img id="userAvatar" src="" alt="Avatar">
+                    <span id="userName"></span>
+                </div>
+                <a href="/admin.html" id="adminLink" style="display: none;"><i class="fas fa-cog"></i> Admin Panel</a>
+                <a href="/auth/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/pages.js"></script>
+</body>
+</html>

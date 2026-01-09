@@ -7,6 +7,160 @@ const path = require('path');
 const fs = require('fs');
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
+const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
+
+// ============================================
+// DISCORD BOT FOR POSTING ARTICLES
+// ============================================
+const discordClient = new Client({
+    intents: [GatewayIntentBits.Guilds]
+});
+
+let discordReady = false;
+
+discordClient.once('ready', () => {
+    console.log(`🤖 Discord bot connected as ${discordClient.user.tag}`);
+    discordReady = true;
+});
+
+// Connect Discord bot
+if (process.env.DISCORD_BOT_TOKEN) {
+    discordClient.login(process.env.DISCORD_BOT_TOKEN).catch(err => {
+        console.error('Discord bot login failed:', err.message);
+    });
+}
+
+// Function to post article to Discord
+async function postArticleToDiscord(article, baseUrl) {
+    if (!discordReady) {
+        console.log('Discord bot not ready, skipping post');
+        return;
+    }
+
+    try {
+        const guild = discordClient.guilds.cache.get(process.env.DISCORD_GUILD_ID);
+        if (!guild) {
+            console.error('Guild not found');
+            return;
+        }
+
+        const channelName = process.env.DISCORD_WEBHOOK_CHANNEL || 'njcaa-website';
+        const channel = guild.channels.cache.find(ch => ch.name === channelName);
+        
+        if (!channel) {
+            console.error(`Channel #${channelName} not found`);
+            return;
+        }
+
+        const articleUrl = `${baseUrl}/news.html?id=${article.id}`;
+        
+        const embed = new EmbedBuilder()
+            .setColor(0x5865F2)
+            .setAuthor({
+                name: '📰 NEW ARTICLE',
+                iconURL: guild.iconURL()
+            })
+            .setTitle(article.title)
+            .setDescription(article.content.substring(0, 300) + (article.content.length > 300 ? '...' : ''))
+            .addFields(
+                { name: '✍️ Author', value: article.author, inline: true },
+                { name: '📅 Published', value: new Date(article.date).toLocaleDateString(), inline: true }
+            )
+            .setURL(articleUrl)
+            .setFooter({ text: 'NJCAA Roblox Football League' })
+            .setTimestamp();
+
+        if (article.image) {
+            embed.setImage(article.image.startsWith('http') ? article.image : `${baseUrl}${article.image}`);
+        }
+
+        await channel.send({
+            content: '📢 **New article published on the NJCAA website!**',
+            embeds: [embed]
+        });
+
+        console.log(`✅ Article posted to #${channelName}`);
+    } catch (error) {
+        console.error('Error posting to Discord:', error);
+    }
+}
+const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
+
+// ============================================
+// DISCORD BOT FOR POSTING ARTICLES
+// ============================================
+const discordClient = new Client({
+    intents: [GatewayIntentBits.Guilds]
+});
+
+let discordReady = false;
+
+discordClient.once('ready', () => {
+    console.log(`🤖 Discord bot connected as ${discordClient.user.tag}`);
+    discordReady = true;
+});
+
+// Connect Discord bot
+if (process.env.DISCORD_BOT_TOKEN) {
+    discordClient.login(process.env.DISCORD_BOT_TOKEN).catch(err => {
+        console.error('Discord bot login failed:', err.message);
+    });
+}
+
+// Function to post article to Discord
+async function postArticleToDiscord(article, baseUrl) {
+    if (!discordReady) {
+        console.log('Discord bot not ready, skipping post');
+        return;
+    }
+
+    try {
+        const guild = discordClient.guilds.cache.get(process.env.DISCORD_GUILD_ID);
+        if (!guild) {
+            console.error('Guild not found');
+            return;
+        }
+
+        const channelName = process.env.DISCORD_WEBHOOK_CHANNEL || 'njcaa-website';
+        const channel = guild.channels.cache.find(ch => ch.name === channelName);
+        
+        if (!channel) {
+            console.error(`Channel #${channelName} not found`);
+            return;
+        }
+
+        const articleUrl = `${baseUrl}/news.html?id=${article.id}`;
+        
+        const embed = new EmbedBuilder()
+            .setColor(0x5865F2)
+            .setAuthor({
+                name: '📰 NEW ARTICLE',
+                iconURL: guild.iconURL()
+            })
+            .setTitle(article.title)
+            .setDescription(article.content.substring(0, 300) + (article.content.length > 300 ? '...' : ''))
+            .addFields(
+                { name: '✍️ Author', value: article.author, inline: true },
+                { name: '📅 Published', value: new Date(article.date).toLocaleDateString(), inline: true }
+            )
+            .setURL(articleUrl)
+            .setFooter({ text: 'NJCAA Roblox Football League' })
+            .setTimestamp();
+
+        if (article.image) {
+            embed.setImage(article.image.startsWith('http') ? article.image : `${baseUrl}${article.image}`);
+        }
+
+        await channel.send({
+            content: '📢 **New article published on the NJCAA website!**',
+            embeds: [embed]
+        });
+
+        console.log(`✅ Article posted to #${channelName}`);
+    } catch (error) {
+        console.error('Error posting to Discord:', error);
+    }
+}
 
 const app = express();
 
@@ -413,6 +567,11 @@ app.post('/api/admin/articles', requireAdmin, (req, res) => {
         };
         articles.push(newArticle);
         writeData('articles', articles);
+        
+        // Post to Discord
+        const baseUrl = process.env.BASE_URL || `${req.protocol}://${req.get('host')}`;
+        postArticleToDiscord(newArticle, baseUrl);
+        
         res.json(newArticle);
     } catch (error) {
         console.error('Error creating article:', error);

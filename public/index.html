@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NJCAA Football</title>
+    <meta name="description" content="NJCAA Football - National Junior College Athletic Association Football News, Scores, and Championships">
+    <title>NJCAA Football | Official Site</title>
+    <link rel="icon" type="image/png" href="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -30,7 +32,9 @@
     <header class="main-header">
         <div class="header-content">
             <div class="logo-section">
-                <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="main-logo">
+                <a href="/">
+                    <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="main-logo">
+                </a>
             </div>
             <nav class="main-nav">
                 <a href="#" class="nav-link">SPORTS <i class="fas fa-chevron-down"></i></a>
@@ -39,8 +43,8 @@
                 <a href="#" class="nav-link">ABOUT <i class="fas fa-chevron-down"></i></a>
                 <a href="#" class="nav-link">LINKS <i class="fas fa-chevron-down"></i></a>
                 <div class="nav-icons">
-                    <a href="#"><i class="fas fa-th"></i></a>
-                    <a href="#"><i class="fas fa-search"></i></a>
+                    <a href="#" title="Menu"><i class="fas fa-th"></i></a>
+                    <a href="#" title="Search"><i class="fas fa-search"></i></a>
                 </div>
             </nav>
         </div>
@@ -64,35 +68,41 @@
             <div class="slides" id="slides">
                 <!-- Slides loaded dynamically -->
             </div>
-            <button class="slider-btn prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
-            <button class="slider-btn next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
-            <button class="slider-btn pause" onclick="togglePause()"><i class="fas fa-pause" id="pauseIcon"></i></button>
+            <button class="slider-btn prev" onclick="changeSlide(-1)" title="Previous">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-btn next" onclick="changeSlide(1)" title="Next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="slider-btn pause" onclick="togglePause()" title="Pause/Play">
+                <i class="fas fa-pause" id="pauseIcon"></i>
+            </button>
         </div>
         <div class="slider-info">
             <p class="slide-date" id="slideDate"></p>
             <h2 class="slide-title" id="slideTitle"></h2>
             <div class="slider-nav">
-                <button onclick="changeSlide(-1)">< Previous</button>
+                <button onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i> Previous</button>
                 <div class="slider-dots" id="sliderDots"></div>
-                <button onclick="changeSlide(1)">Next ></button>
+                <button onclick="changeSlide(1)">Next <i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
     <!-- News Section -->
     <section class="news-section">
-        <h2 class="section-title">MORE NEWS</h2>
+        <h2 class="section-title">LATEST NEWS</h2>
         <div class="news-grid" id="newsGrid">
-            <!-- News loaded dynamically -->
+            <div class="loading"></div>
         </div>
-        <a href="#" class="view-more">View More</a>
+        <a href="#" class="view-more">View All News <i class="fas fa-arrow-right"></i></a>
     </section>
 
     <!-- Scoreboard Section -->
     <section class="scoreboard-section">
         <h2 class="section-title">SCOREBOARD</h2>
         <div class="scoreboard-grid" id="scoreboardGrid">
-            <!-- Scores loaded dynamically -->
+            <div class="loading"></div>
         </div>
     </section>
 
@@ -100,7 +110,7 @@
     <section class="photos-section">
         <div class="photos-slider">
             <div class="photos-slide active">
-                <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1920" alt="Photos">
+                <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1920&q=80" alt="NJCAA Photos of the Week">
                 <div class="photos-overlay">
                     <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="photos-logo">
                     <h2>PHOTOS OF THE WEEK</h2>
@@ -113,13 +123,21 @@
     <section class="quick-links-section">
         <div class="quick-links-container">
             <div class="quick-links-list">
-                <a href="#" class="quick-link">NJCAA FOOTBALL SCOREBOARD <i class="fas fa-chevron-right"></i></a>
-                <a href="#" class="quick-link">NJCAA FOOTBALL TEAMS <i class="fas fa-chevron-right"></i></a>
-                <a href="#" class="quick-link">NJCAA DI FOOTBALL <i class="fas fa-chevron-right"></i></a>
-                <a href="#" class="quick-link active">NJCAA DIII FOOTBALL <i class="fas fa-chevron-right"></i></a>
+                <a href="#scoreboard" class="quick-link">
+                    NJCAA FOOTBALL SCOREBOARD <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="#" class="quick-link">
+                    NJCAA FOOTBALL TEAMS <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="#" class="quick-link">
+                    NJCAA DI FOOTBALL <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="#" class="quick-link active">
+                    NJCAA DIII FOOTBALL <i class="fas fa-chevron-right"></i>
+                </a>
             </div>
             <div class="quick-links-image">
-                <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800" alt="DIII Football">
+                <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800&q=80" alt="DIII Football">
                 <div class="quick-links-overlay">
                     <h2>NJCAA</h2>
                     <h1>DIII FOOTBALL</h1>
@@ -130,18 +148,30 @@
 
     <!-- Sponsor Banner -->
     <section class="sponsor-section">
-        <img src="https://via.placeholder.com/728x90?text=TEAM+ISSUE+-+Official+Football+of+the+NJCAA" alt="Sponsor" class="sponsor-banner">
+        <a href="#">
+            <img src="https://via.placeholder.com/728x90/003366/ffffff?text=TEAM+ISSUE+-+Official+Football+of+the+NJCAA" alt="Team Issue - Official Football of the NJCAA" class="sponsor-banner">
+        </a>
     </section>
 
     <!-- Social Section -->
     <section class="social-section">
         <h2 class="social-hashtag">#OPPORTUNITIESSTARTHERE</h2>
         <div class="social-icons">
-            <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/NJCAA" target="_blank" rel="noopener" class="social-icon" title="X (Twitter)">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://youtube.com/NJCAA" target="_blank" rel="noopener" class="social-icon" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://instagram.com/NJCAA" target="_blank" rel="noopener" class="social-icon" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com/NJCAA" target="_blank" rel="noopener" class="social-icon" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://linkedin.com/company/NJCAA" target="_blank" rel="noopener" class="social-icon" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
         </div>
     </section>
 
@@ -151,10 +181,18 @@
             <div class="footer-left">
                 <h3>NJCAA</h3>
                 <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://facebook.com/NJCAA" target="_blank" rel="noopener" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com/NJCAA" target="_blank" rel="noopener" title="X (Twitter)">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com/NJCAA" target="_blank" rel="noopener" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://youtube.com/NJCAA" target="_blank" rel="noopener" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
                 <p>©2026 NJCAA. All rights reserved.</p>
                 <p><a href="#">Terms of Use</a> • <a href="#">Privacy Policy</a></p>
@@ -167,7 +205,7 @@
 
     <!-- User Menu (floating) -->
     <div class="user-menu" id="userMenu">
-        <button class="user-btn" id="userBtn">
+        <button class="user-btn" id="userBtn" title="Account">
             <i class="fas fa-user"></i>
         </button>
         <div class="user-dropdown" id="userDropdown">

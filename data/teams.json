@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1",
+        "name": "Iowa Western Community College",
+        "abbreviation": "IWCC",
+        "conference": "ICCAC",
+        "location": "Council Bluffs, IA"
+    },
+    {
+        "id": "2",
+        "name": "Hutchinson Community College",
+        "abbreviation": "HCC",
+        "conference": "KJCCC",
+        "location": "Hutchinson, KS"
+    },
+    {
+        "id": "3",
+        "name": "Tyler Junior College",
+        "abbreviation": "TJC",
+        "conference": "SWJCFC",
+        "location": "Tyler, TX"
+    },
+    {
+        "id": "4",
+        "name": "Garden City Community College",
+        "abbreviation": "GCCC",
+        "conference": "KJCCC",
+        "location": "Garden City, KS"
+    },
+    {
+        "id": "5",
+        "name": "College of DuPage",
+        "abbreviation": "COD",
+        "conference": "DIII",
+        "location": "Glen Ellyn, IL"
+    },
+    {
+        "id": "6",
+        "name": "Northwest Mississippi Community College",
+        "abbreviation": "NWCC",
+        "conference": "MACCC",
+        "location": "Senatobia, MS"
+    }
+]

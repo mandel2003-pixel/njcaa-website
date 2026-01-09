@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NJCAA Football</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <span class="top-bar-logo">NJCAA</span>
+            <nav class="top-bar-nav">
+                <a href="#">NJCAA</a>
+                <a href="#">Stats</a>
+                <a href="#">Foundation</a>
+                <a href="#">Championships</a>
+                <a href="#">Network</a>
+                <a href="#">Compliance</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="main-logo">
+            </div>
+            <nav class="main-nav">
+                <a href="#" class="nav-link">SPORTS <i class="fas fa-chevron-down"></i></a>
+                <a href="#" class="nav-link">CHAMPIONSHIPS</a>
+                <a href="#" class="nav-link">MEMBERSHIP <i class="fas fa-chevron-down"></i></a>
+                <a href="#" class="nav-link">ABOUT <i class="fas fa-chevron-down"></i></a>
+                <a href="#" class="nav-link">LINKS <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-icons">
+                    <a href="#"><i class="fas fa-th"></i></a>
+                    <a href="#"><i class="fas fa-search"></i></a>
+                </div>
+            </nav>
+        </div>
+        <div class="sub-header">
+            <div class="sub-header-content">
+                <span class="sport-title">FOOTBALL</span>
+                <nav class="sub-nav">
+                    <a href="#">NEWS</a>
+                    <a href="#">TEAMS</a>
+                    <a href="#">DIVISION I</a>
+                    <a href="#">DIVISION III</a>
+                    <a href="#">CHAMPIONSHIPS</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider" id="heroSlider">
+        <div class="slider-container">
+            <div class="slides" id="slides">
+                <!-- Slides loaded dynamically -->
+            </div>
+            <button class="slider-btn prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+            <button class="slider-btn pause" onclick="togglePause()"><i class="fas fa-pause" id="pauseIcon"></i></button>
+        </div>
+        <div class="slider-info">
+            <p class="slide-date" id="slideDate"></p>
+            <h2 class="slide-title" id="slideTitle"></h2>
+            <div class="slider-nav">
+                <button onclick="changeSlide(-1)">< Previous</button>
+                <div class="slider-dots" id="sliderDots"></div>
+                <button onclick="changeSlide(1)">Next ></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <h2 class="section-title">MORE NEWS</h2>
+        <div class="news-grid" id="newsGrid">
+            <!-- News loaded dynamically -->
+        </div>
+        <a href="#" class="view-more">View More</a>
+    </section>
+
+    <!-- Scoreboard Section -->
+    <section class="scoreboard-section">
+        <h2 class="section-title">SCOREBOARD</h2>
+        <div class="scoreboard-grid" id="scoreboardGrid">
+            <!-- Scores loaded dynamically -->
+        </div>
+    </section>
+
+    <!-- Photos Section -->
+    <section class="photos-section">
+        <div class="photos-slider">
+            <div class="photos-slide active">
+                <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1920" alt="Photos">
+                <div class="photos-overlay">
+                    <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="photos-logo">
+                    <h2>PHOTOS OF THE WEEK</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links-section">
+        <div class="quick-links-container">
+            <div class="quick-links-list">
+                <a href="#" class="quick-link">NJCAA FOOTBALL SCOREBOARD <i class="fas fa-chevron-right"></i></a>
+                <a href="#" class="quick-link">NJCAA FOOTBALL TEAMS <i class="fas fa-chevron-right"></i></a>
+                <a href="#" class="quick-link">NJCAA DI FOOTBALL <i class="fas fa-chevron-right"></i></a>
+                <a href="#" class="quick-link active">NJCAA DIII FOOTBALL <i class="fas fa-chevron-right"></i></a>
+            </div>
+            <div class="quick-links-image">
+                <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800" alt="DIII Football">
+                <div class="quick-links-overlay">
+                    <h2>NJCAA</h2>
+                    <h1>DIII FOOTBALL</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsor Banner -->
+    <section class="sponsor-section">
+        <img src="https://via.placeholder.com/728x90?text=TEAM+ISSUE+-+Official+Football+of+the+NJCAA" alt="Sponsor" class="sponsor-banner">
+    </section>
+
+    <!-- Social Section -->
+    <section class="social-section">
+        <h2 class="social-hashtag">#OPPORTUNITIESSTARTHERE</h2>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>NJCAA</h3>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p>©2026 NJCAA. All rights reserved.</p>
+                <p><a href="#">Terms of Use</a> • <a href="#">Privacy Policy</a></p>
+            </div>
+            <div class="footer-logos">
+                <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="footer-logo">
+            </div>
+        </div>
+    </footer>
+
+    <!-- User Menu (floating) -->
+    <div class="user-menu" id="userMenu">
+        <button class="user-btn" id="userBtn">
+            <i class="fas fa-user"></i>
+        </button>
+        <div class="user-dropdown" id="userDropdown">
+            <div id="loggedOut">
+                <a href="/auth/discord" class="discord-login">
+                    <i class="fab fa-discord"></i> Login with Discord
+                </a>
+            </div>
+            <div id="loggedIn" style="display: none;">
+                <div class="user-info">
+                    <img id="userAvatar" src="" alt="Avatar">
+                    <span id="userName"></span>
+                </div>
+                <a href="/admin.html" id="adminLink" style="display: none;">
+                    <i class="fas fa-cog"></i> Admin Panel
+                </a>
+                <a href="/auth/logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

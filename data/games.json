@@ -1,0 +1,68 @@
+[
+    {
+        "id": "1",
+        "homeTeam": "Hutchinson Community College",
+        "awayTeam": "Garden City Community College",
+        "homeScore": 27,
+        "awayScore": 14,
+        "date": "2025-11-22",
+        "time": "2:00 PM",
+        "venue": "Gowans Stadium | Hutchinson, KS",
+        "status": "final"
+    },
+    {
+        "id": "2",
+        "homeTeam": "Tyler Junior College",
+        "awayTeam": "Northeastern Oklahoma A&M",
+        "homeScore": 33,
+        "awayScore": 14,
+        "date": "2025-11-22",
+        "time": "7:00 PM",
+        "venue": "SWJCFC Final | Tyler, TX",
+        "status": "final"
+    },
+    {
+        "id": "3",
+        "homeTeam": "Iowa Western Community College",
+        "awayTeam": "Highland Community College",
+        "homeScore": 64,
+        "awayScore": 13,
+        "date": "2025-11-22",
+        "time": "1:00 PM",
+        "venue": "Titan Stadium | Council Bluffs, IA",
+        "status": "final"
+    },
+    {
+        "id": "4",
+        "homeTeam": "Iowa Western Community College",
+        "awayTeam": "Tyler Junior College",
+        "homeScore": 41,
+        "awayScore": 29,
+        "date": "2025-12-05",
+        "time": "7:00 PM",
+        "venue": "2025 NJCAA DI Football Playoffs - Semifinal",
+        "status": "final"
+    },
+    {
+        "id": "5",
+        "homeTeam": "College of DuPage",
+        "awayTeam": "North Dakota State College of Science",
+        "homeScore": 36,
+        "awayScore": 13,
+        "date": "2025-12-06",
+        "time": "12:00 PM",
+        "venue": "NJCAA DIII National Championship",
+        "status": "final"
+    },
+    {
+        "id": "6",
+        "homeTeam": "Hutchinson Community College",
+        "awayTeam": "Northwest Mississippi Community College",
+        "homeScore": 27,
+        "awayScore": 0,
+        "date": "2025-12-06",
+        "time": "3:00 PM",
+        "venue": "2025 NJCAA DI Football Playoffs - Semifinal",
+        "status": "final"
+    }
+]

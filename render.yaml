@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: njcaa-website
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: DISCORD_CLIENT_ID
+        value: 1459037572960485477
+      - key: DISCORD_CLIENT_SECRET
+        sync: false
+      - key: DISCORD_REDIRECT_URI
+        sync: false
+      - key: DISCORD_BOT_TOKEN
+        sync: false
+      - key: DISCORD_GUILD_ID
+        value: 1457369799481884967
+      - key: DISCORD_WEBHOOK_CHANNEL
+        value: njcaa-website
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production

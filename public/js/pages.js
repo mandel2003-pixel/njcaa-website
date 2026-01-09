@@ -200,7 +200,7 @@ function renderTeamsGrid(teams) {
     container.innerHTML = teams.map(team => `
         <div class="team-card">
             <div class="team-logo">
-                <img src="${team.logo || 'https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png'}" alt="${team.name}">
+                <img src="${team.logo || 'https://www.njcaa.org/images/setup/site-logo.png'}" alt="${team.name}">
             </div>
             <div class="team-info">
                 <h3>${team.name}</h3>
@@ -261,7 +261,7 @@ function renderDivisionTeams(teams) {
     
     container.innerHTML = teams.slice(0, 6).map(team => `
         <div class="division-team-card">
-            <img src="${team.logo || 'https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png'}" alt="${team.name}">
+            <img src="${team.logo || 'https://www.njcaa.org/images/setup/site-logo.png'}" alt="${team.name}">
             <h4>${team.name}</h4>
             <span>${team.location || ''}</span>
         </div>

@@ -15,10 +15,18 @@ let currentUser = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     checkAuth();
-    loadSlides();
-    loadNews();
-    loadScoreboard();
     setupUserMenu();
+    
+    // Only load these if on homepage
+    if (document.getElementById('slides')) {
+        loadSlides();
+    }
+    if (document.getElementById('newsGrid')) {
+        loadNews();
+    }
+    if (document.getElementById('scoreboardGrid')) {
+        loadScoreboard();
+    }
 });
 
 // ============================================
@@ -40,29 +48,44 @@ async function checkAuth() {
 }
 
 function showLoggedInState() {
-    document.getElementById('loggedOut').style.display = 'none';
-    document.getElementById('loggedIn').style.display = 'block';
+    const loggedOut = document.getElementById('loggedOut');
+    const loggedIn = document.getElementById('loggedIn');
+    const userAvatar = document.getElementById('userAvatar');
+    const userName = document.getElementById('userName');
+    const adminLink = document.getElementById('adminLink');
     
-    const avatar = currentUser.avatar
-        ? `https://cdn.discordapp.com/avatars/${currentUser.id}/${currentUser.avatar}.png`
-        : 'https://cdn.discordapp.com/embed/avatars/0.png';
+    if (loggedOut) loggedOut.style.display = 'none';
+    if (loggedIn) loggedIn.style.display = 'block';
     
-    document.getElementById('userAvatar').src = avatar;
-    document.getElementById('userName').textContent = currentUser.username;
+    if (userAvatar && currentUser) {
+        const avatar = currentUser.avatar
+            ? `https://cdn.discordapp.com/avatars/${currentUser.id}/${currentUser.avatar}.png`
+            : 'https://cdn.discordapp.com/embed/avatars/0.png';
+        userAvatar.src = avatar;
+    }
     
-    if (currentUser.isAdmin) {
-        document.getElementById('adminLink').style.display = 'flex';
+    if (userName && currentUser) {
+        userName.textContent = currentUser.username;
+    }
+    
+    if (adminLink && currentUser?.isAdmin) {
+        adminLink.style.display = 'flex';
     }
 }
 
 function showLoggedOutState() {
-    document.getElementById('loggedOut').style.display = 'block';
-    document.getElementById('loggedIn').style.display = 'none';
+    const loggedOut = document.getElementById('loggedOut');
+    const loggedIn = document.getElementById('loggedIn');
+    
+    if (loggedOut) loggedOut.style.display = 'block';
+    if (loggedIn) loggedIn.style.display = 'none';
 }
 
 function setupUserMenu() {
     const btn = document.getElementById('userBtn');
     const dropdown = document.getElementById('userDropdown');
+    
+    if (!btn || !dropdown) return;
     
     btn.addEventListener('click', () => {
         dropdown.classList.toggle('show');
@@ -88,7 +111,7 @@ async function loadSlides() {
             slides = [{
                 id: '1',
                 image: 'https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1920',
-                title: 'Welcome to NJCAA Football',
+                title: 'Welcome to NJCAA Roblox Football',
                 date: new Date().toISOString()
             }];
         }
@@ -103,6 +126,8 @@ async function loadSlides() {
 function renderSlides() {
     const container = document.getElementById('slides');
     const dotsContainer = document.getElementById('sliderDots');
+    
+    if (!container || !dotsContainer) return;
     
     container.innerHTML = slides.map((slide, index) => `
         <div class="slide ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})">
@@ -119,9 +144,12 @@ function renderSlides() {
 
 function updateSlideInfo() {
     const slide = slides[currentSlide];
-    if (slide) {
-        document.getElementById('slideDate').textContent = formatDate(slide.date);
-        document.getElementById('slideTitle').textContent = slide.title;
+    const slideDate = document.getElementById('slideDate');
+    const slideTitle = document.getElementById('slideTitle');
+    
+    if (slide && slideDate && slideTitle) {
+        slideDate.textContent = formatDate(slide.date);
+        slideTitle.textContent = slide.title;
         
         // Update active states
         document.querySelectorAll('.slide').forEach((el, i) => {
@@ -148,7 +176,9 @@ function goToSlide(index) {
 function togglePause() {
     isPaused = !isPaused;
     const icon = document.getElementById('pauseIcon');
-    icon.className = isPaused ? 'fas fa-play' : 'fas fa-pause';
+    if (icon) {
+        icon.className = isPaused ? 'fas fa-play' : 'fas fa-pause';
+    }
     
     if (isPaused) {
         clearInterval(sliderInterval);
@@ -181,6 +211,8 @@ async function loadNews() {
 function renderNews(articles) {
     const container = document.getElementById('newsGrid');
     
+    if (!container) return;
+    
     if (articles.length === 0) {
         container.innerHTML = `
             <div class="news-card">
@@ -189,7 +221,7 @@ function renderNews(articles) {
                 </div>
                 <div class="news-card-content">
                     <p class="news-card-date">January 9, 2026</p>
-                    <h3 class="news-card-title">Welcome to NJCAA Football</h3>
+                    <h3 class="news-card-title">Welcome to NJCAA Roblox Football</h3>
                 </div>
             </div>
         `;
@@ -230,11 +262,13 @@ async function loadScoreboard() {
 function renderScoreboard(games) {
     const container = document.getElementById('scoreboardGrid');
     
+    if (!container) return;
+    
     if (games.length === 0) {
         container.innerHTML = `
             <div class="score-card">
                 <div class="score-card-header">
-                    <span>Football</span>
+                    <span>🏈 Football</span>
                     <span>No Games Scheduled</span>
                 </div>
                 <div class="score-card-body">
@@ -248,7 +282,7 @@ function renderScoreboard(games) {
     container.innerHTML = games.map(game => `
         <div class="score-card">
             <div class="score-card-header">
-                <span>Football</span>
+                <span>🏈 Football</span>
                 <span>${formatShortDate(game.date)} ${game.status === 'final' ? 'Final' : game.time || ''}</span>
             </div>
             <div class="score-card-body">
@@ -276,6 +310,7 @@ function renderScoreboard(games) {
 // ============================================
 
 function formatDate(dateString) {
+    if (!dateString) return '';
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
         year: 'numeric',
@@ -285,6 +320,7 @@ function formatDate(dateString) {
 }
 
 function formatShortDate(dateString) {
+    if (!dateString) return '';
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
         month: 'short',

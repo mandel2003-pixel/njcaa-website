@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team | NJCAA Roblox Football</title>
+    <link rel="icon" type="image/png" href="https://www.njcaa.org/images/setup/site-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pages.css">
+    <link rel="stylesheet" href="/css/roblox.css">
+    <link rel="stylesheet" href="/css/team.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <span class="top-bar-logo">NJCAA ROBLOX</span>
+            <nav class="top-bar-nav">
+                <a href="/">Home</a>
+                <a href="/teams.html">Programs</a>
+                <a href="/news.html">News</a>
+                <a href="/championships.html">Championships</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <a href="/"><img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA" class="main-logo"></a>
+            </div>
+            <nav class="main-nav">
+                <a href="/teams.html" class="nav-link">PROGRAMS</a>
+                <a href="/championships.html" class="nav-link">CHAMPIONSHIPS</a>
+                <a href="/membership.html" class="nav-link">JOIN LEAGUE</a>
+                <a href="/about.html" class="nav-link">ABOUT</a>
+                <a href="/news.html" class="nav-link">NEWS</a>
+            </nav>
+        </div>
+        <div class="sub-header">
+            <div class="sub-header-content">
+                <span class="sport-title">SEASON ONE</span>
+                <nav class="sub-nav">
+                    <a href="/news.html">NEWS</a>
+                    <a href="/teams.html">TEAMS</a>
+                    <a href="/teams.html#east">EAST REGION</a>
+                    <a href="/teams.html#south">SOUTH REGION</a>
+                    <a href="/championships.html">CHAMPIONSHIPS</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Team Hero (Dynamic) -->
+    <section class="team-hero" id="teamHero">
+        <div class="team-hero-bg"></div>
+        <div class="team-hero-overlay"></div>
+        <div class="team-hero-content">
+            <div class="team-logo-large" id="teamLogoHero">
+                <div class="team-initials-hero" id="teamInitials">--</div>
+            </div>
+            <h1 id="teamName">Loading...</h1>
+            <p id="teamLocation"><i class="fas fa-map-marker-alt"></i> Loading...</p>
+            <div class="team-record" id="teamRecord">
+                <span class="record-item"><strong id="wins">0</strong> Wins</span>
+                <span class="record-divider">|</span>
+                <span class="record-item"><strong id="losses">0</strong> Losses</span>
+                <span class="record-divider">|</span>
+                <span class="record-item conference" id="teamConference">Loading...</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <span>/</span>
+            <a href="/teams.html">Programs</a>
+            <span>/</span>
+            <span class="current" id="breadcrumbTeam">Team</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="page-content">
+        <div class="content-container">
+            
+            <!-- Team Info Card -->
+            <section class="team-info-section">
+                <div class="team-info-card-large">
+                    <h3><i class="fas fa-info-circle"></i> Program Information</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Full Name</span>
+                            <span class="info-value" id="infoFullName">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Nickname</span>
+                            <span class="info-value" id="infoNickname">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Conference</span>
+                            <span class="info-value" id="infoConference">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Location</span>
+                            <span class="info-value" id="infoLocation">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Staff Section -->
+            <section class="team-staff-section">
+                <h3><i class="fas fa-users"></i> Coaching Staff</h3>
+                <div class="staff-grid">
+                    <div class="staff-card">
+                        <div class="staff-avatar">AD</div>
+                        <div class="staff-info">
+                            <span class="staff-role">Athletic Director</span>
+                            <span class="staff-name" id="staffAD">Available</span>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-avatar">HC</div>
+                        <div class="staff-info">
+                            <span class="staff-role">Head Coach</span>
+                            <span class="staff-name" id="staffHC">Available</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://discord.gg/DAs2Y27BWV" target="_blank" class="apply-btn">
+                    <i class="fab fa-discord"></i> Apply for Open Positions
+                </a>
+            </section>
+
+            <!-- Schedule Section -->
+            <section class="team-schedule-section">
+                <h3><i class="fas fa-calendar"></i> Season Schedule</h3>
+                <div class="schedule-list" id="scheduleList">
+                    <div class="loading"></div>
+                </div>
+            </section>
+
+            <!-- Recent Results -->
+            <section class="team-results-section">
+                <h3><i class="fas fa-trophy"></i> Recent Results</h3>
+                <div class="results-list" id="resultsList">
+                    <p class="no-results">No games played yet</p>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="page-sidebar">
+            <div class="sidebar-widget">
+                <h3><i class="fas fa-chart-bar"></i> Season Stats</h3>
+                <div class="stats-list">
+                    <div class="stat-row">
+                        <span>Record</span>
+                        <strong id="statRecord">0-0</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>Points Scored</span>
+                        <strong id="statPointsFor">0</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>Points Allowed</span>
+                        <strong id="statPointsAgainst">0</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>Point Differential</span>
+                        <strong id="statDiff">0</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3><i class="fas fa-football"></i> Quick Links</h3>
+                <ul class="sidebar-links">
+                    <li><a href="/teams.html"><i class="fas fa-users"></i> All Programs</a></li>
+                    <li><a href="/championships.html"><i class="fas fa-trophy"></i> Championships</a></li>
+                    <li><a href="/news.html"><i class="fas fa-newspaper"></i> League News</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget cta-widget">
+                <h3><i class="fas fa-gamepad"></i> Join This Team</h3>
+                <p>Want to play for this program?</p>
+                <a href="https://discord.gg/GNMD7wwvgW" target="_blank" class="join-btn">
+                    <i class="fab fa-discord"></i> Join as Player
+                </a>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>NJCAA ROBLOX</h3>
+                <p class="footer-tagline">The Premier Roblox Football Experience</p>
+                <div class="footer-social">
+                    <a href="https://discord.gg/GNMD7wwvgW"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p class="footer-founders">Founded by WRBEAST990, SaintJayden, Marcel & Grayson</p>
+                <p>©2026 NJCAA Roblox Football League.</p>
+            </div>
+            <div class="footer-logos">
+                <img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA" class="footer-logo">
+            </div>
+        </div>
+    </footer>
+
+    <!-- User Menu -->
+    <div class="user-menu" id="userMenu">
+        <button class="user-btn" id="userBtn"><i class="fas fa-user"></i></button>
+        <div class="user-dropdown" id="userDropdown">
+            <div id="loggedOut">
+                <a href="/auth/discord" class="discord-login"><i class="fab fa-discord"></i> Login with Discord</a>
+            </div>
+            <div id="loggedIn" style="display: none;">
+                <div class="user-info">
+                    <img id="userAvatar" src="" alt="Avatar">
+                    <span id="userName"></span>
+                </div>
+                <a href="/admin.html" id="adminLink" style="display: none;"><i class="fas fa-cog"></i> Admin Panel</a>
+                <a href="/auth/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/team.js"></script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+/* ============================================
+   TEAM PAGE STYLES
+   ============================================ */
+
+/* Team Hero */
+.team-hero {
+    position: relative;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--njcaa-dark-blue) 0%, #001428 100%);
+    overflow: hidden;
+}
+
+.team-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1920') center/cover;
+    opacity: 0.15;
+}
+
+.team-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 20, 40, 0.8) 100%);
+}
+
+.team-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+}
+
+.team-logo-large {
+    margin-bottom: 20px;
+}
+
+.team-initials-hero {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--njcaa-accent) 0%, var(--njcaa-blue) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0 auto;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.team-hero-content h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.team-hero-content > p {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.team-record {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-size: 18px;
+}
+
+.record-item strong {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.record-divider {
+    opacity: 0.4;
+}
+
+.record-item.conference {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Team Info Section */
+.team-info-section {
+    margin-bottom: 30px;
+}
+
+.team-info-card-large {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow-sm);
+}
+
+.team-info-card-large h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    color: var(--njcaa-blue);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-label {
+    font-size: 12px;
+    color: var(--njcaa-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--njcaa-dark-gray);
+}
+
+/* Staff Section */
+.team-staff-section {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 30px;
+}
+
+.team-staff-section h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    color: var(--njcaa-blue);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.staff-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--njcaa-gray);
+    border-radius: 10px;
+}
+
+.staff-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, var(--njcaa-accent) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.staff-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.staff-role {
+    font-size: 12px;
+    color: var(--njcaa-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.staff-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--njcaa-dark-gray);
+}
+
+.staff-name.available {
+    color: var(--njcaa-accent);
+    font-style: italic;
+}
+
+.apply-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #5865F2;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.apply-btn:hover {
+    background: #4752C4;
+    transform: translateY(-2px);
+}
+
+/* Schedule Section */
+.team-schedule-section,
+.team-results-section {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 30px;
+}
+
+.team-schedule-section h3,
+.team-results-section h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    color: var(--njcaa-blue);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.schedule-game {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: var(--njcaa-gray);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.schedule-game:hover {
+    background: #e8eaed;
+}
+
+.game-opponent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.opponent-logo {
+    width: 40px;
+    height: 40px;
+    background: var(--njcaa-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.opponent-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.opponent-name {
+    font-weight: 600;
+    color: var(--njcaa-dark-gray);
+}
+
+.game-location {
+    font-size: 12px;
+    color: var(--njcaa-text-light);
+}
+
+.game-details {
+    text-align: right;
+}
+
+.game-date {
+    font-weight: 600;
+    color: var(--njcaa-dark-gray);
+}
+
+.game-time {
+    font-size: 13px;
+    color: var(--njcaa-text-light);
+}
+
+.game-result {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.game-result.win {
+    color: #28a745;
+}
+
+.game-result.loss {
+    color: #dc3545;
+}
+
+.no-results {
+    text-align: center;
+    color: var(--njcaa-text-light);
+    padding: 20px;
+}
+
+/* Sidebar Widgets */
+.stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-row span {
+    color: var(--njcaa-text-light);
+    font-size: 14px;
+}
+
+.stat-row strong {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    color: var(--njcaa-blue);
+}
+
+.cta-widget {
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, #004080 100%) !important;
+    color: white !important;
+}
+
+.cta-widget h3 {
+    color: white !important;
+}
+
+.cta-widget p {
+    opacity: 0.9;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.join-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: white;
+    color: var(--njcaa-blue);
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.join-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .team-hero {
+        height: 300px;
+    }
+    
+    .team-hero-content h1 {
+        font-size: 32px;
+    }
+    
+    .team-initials-hero {
+        width: 90px;
+        height: 90px;
+        font-size: 32px;
+    }
+    
+    .team-record {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .info-grid,
+    .staff-grid {
+        grid-template-columns: 1fr;
+    }
+}

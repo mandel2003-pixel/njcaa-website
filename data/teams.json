@@ -3,54 +3,66 @@
         "id": "1",
         "name": "East Mississippi",
         "abbreviation": "EMCC",
+        "nickname": "Lions",
         "conference": "East Region",
         "location": "Mayhew Campus",
-        "nickname": "Lions",
-        "athleticDirector": "WRBEAST990"
+        "athleticDirector": "WRBEAST990",
+        "headCoach": "",
+        "logo": ""
     },
     {
         "id": "2",
         "name": "Ellsworth Panthers",
         "abbreviation": "ECC",
+        "nickname": "Panthers",
         "conference": "East Region",
         "location": "Ellsworth, Wisconsin",
-        "nickname": "Panthers",
-        "athleticDirector": "SaintJayden"
+        "athleticDirector": "SaintJayden",
+        "headCoach": "",
+        "logo": ""
     },
     {
         "id": "3",
         "name": "Indy Pirates",
         "abbreviation": "INDY",
+        "nickname": "Pirates",
         "conference": "East Region",
         "location": "Thompson's Station, Tennessee",
-        "nickname": "Pirates",
-        "athleticDirector": "Marcel"
+        "athleticDirector": "Marcel",
+        "headCoach": "",
+        "logo": ""
     },
     {
         "id": "4",
         "name": "Laney Eagles",
         "abbreviation": "LCC",
+        "nickname": "Eagles",
         "conference": "South Region",
         "location": "Wilmington, North Carolina",
-        "nickname": "Eagles",
-        "athleticDirector": "Grayson"
+        "athleticDirector": "Grayson",
+        "headCoach": "",
+        "logo": ""
     },
     {
         "id": "5",
         "name": "Diablo Valley Vikings",
         "abbreviation": "DVC",
+        "nickname": "Vikings",
         "conference": "South Region",
         "location": "Pleasant Hill, California",
-        "nickname": "Vikings",
-        "athleticDirector": "Available"
+        "athleticDirector": "",
+        "headCoach": "",
+        "logo": ""
     },
     {
         "id": "6",
         "name": "Southwest Bears",
         "abbreviation": "SWC",
+        "nickname": "Bears",
         "conference": "South Region",
         "location": "Fort Worth, TX",
-        "nickname": "Bears",
-        "athleticDirector": "Available"
+        "athleticDirector": "",
+        "headCoach": "",
+        "logo": ""
     }
 ]

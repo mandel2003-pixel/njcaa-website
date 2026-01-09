@@ -13,15 +13,19 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 
 // Session
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'njcaa-secret',
+    secret: process.env.SESSION_SECRET || 'njcaa-secret-key-change-in-production',
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false, maxAge: 7 * 24 * 60 * 60 * 1000 }
+    cookie: { 
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 7 * 24 * 60 * 60 * 1000 
+    }
 }));
 
 // File upload config
@@ -49,24 +53,17 @@ const dataFiles = {
     settings: path.join(DATA_DIR, 'settings.json')
 };
 
-// Initialize data files
+// Initialize data files with defaults
 function initDataFiles() {
     const defaults = {
         articles: [],
         games: [],
         teams: [],
-        slides: [
-            {
-                id: '1',
-                image: 'https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1920',
-                title: 'Welcome to NJCAA Football',
-                date: new Date().toISOString()
-            }
-        ],
+        slides: [],
         settings: {
-            siteName: 'NJCAA Football',
-            heroTitle: 'NJCAA FOOTBALL',
-            season: '2025-2026'
+            siteName: 'NJCAA Roblox Football League',
+            tagline: 'The Premier Roblox Football Experience',
+            season: 'Season ONE'
         }
     };
 
@@ -81,93 +78,50 @@ initDataFiles();
 // Helper functions
 function readData(file) {
     try {
-        return JSON.parse(fs.readFileSync(dataFiles[file], 'utf8'));
-    } catch {
-        return [];
+        const data = fs.readFileSync(dataFiles[file], 'utf8');
+        return JSON.parse(data);
+    } catch (error) {
+        console.error(`Error reading ${file}:`, error);
+        return file === 'settings' ? {} : [];
     }
 }
 
 function writeData(file, data) {
-    fs.writeFileSync(dataFiles[file], JSON.stringify(data, null, 2));
+    try {
+        fs.writeFileSync(dataFiles[file], JSON.stringify(data, null, 2));
+        return true;
+    } catch (error) {
+        console.error(`Error writing ${file}:`, error);
+        return false;
+    }
 }
 
-// Discord OAuth URLs
+// Discord OAuth
 const DISCORD_API = 'https://discord.com/api/v10';
-const OAUTH_URL = `https://discord.com/api/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.DISCORD_REDIRECT_URI)}&response_type=code&scope=identify%20guilds`;
+const getOAuthUrl = () => {
+    const redirectUri = process.env.DISCORD_REDIRECT_URI || 'http://localhost:3000/auth/discord/callback';
+    return `https://discord.com/api/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=identify%20guilds`;
+};
 
-// Check if user is admin in the guild
+// Check if user is admin
 async function checkAdmin(accessToken) {
     try {
-        // Get user's guilds
         const guildsRes = await fetch(`${DISCORD_API}/users/@me/guilds`, {
             headers: { Authorization: `Bearer ${accessToken}` }
         });
         const guilds = await guildsRes.json();
         
-        // Find our guild
+        if (!Array.isArray(guilds)) return false;
+        
         const guild = guilds.find(g => g.id === process.env.DISCORD_GUILD_ID);
         if (!guild) return false;
         
-        // Check for admin permission (0x8 is ADMINISTRATOR)
-        return (guild.permissions & 0x8) === 0x8;
+        // Check for admin, manage server, or moderator permissions
+        const adminPerms = 0x8 | 0x20 | 0x10000; // ADMINISTRATOR | MANAGE_GUILD | MANAGE_ROLES
+        return (Number(guild.permissions) & adminPerms) !== 0;
     } catch (error) {
         console.error('Admin check error:', error);
         return false;
-    }
-}
-
-// Send Discord webhook notification
-async function sendDiscordNotification(type, data) {
-    try {
-        const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
-        const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-        
-        await client.login(process.env.DISCORD_BOT_TOKEN);
-        
-        const guild = await client.guilds.fetch(process.env.DISCORD_GUILD_ID);
-        const channel = guild.channels.cache.find(c => c.name === process.env.DISCORD_WEBHOOK_CHANNEL);
-        
-        if (!channel) {
-            client.destroy();
-            return;
-        }
-
-        let embed;
-        if (type === 'article') {
-            embed = new EmbedBuilder()
-                .setColor(0x003366)
-                .setTitle(`📰 ${data.title}`)
-                .setDescription(data.content?.substring(0, 200) + '...')
-                .setImage(data.image)
-                .setFooter({ text: 'NJCAA Website Update' })
-                .setTimestamp();
-        } else if (type === 'game') {
-            embed = new EmbedBuilder()
-                .setColor(0x003366)
-                .setTitle('🏈 Game Scheduled')
-                .addFields(
-                    { name: 'Matchup', value: `${data.homeTeam} vs ${data.awayTeam}`, inline: true },
-                    { name: 'Date', value: data.date, inline: true },
-                    { name: 'Venue', value: data.venue || 'TBD', inline: true }
-                )
-                .setFooter({ text: 'NJCAA Website Update' })
-                .setTimestamp();
-        } else if (type === 'score') {
-            embed = new EmbedBuilder()
-                .setColor(0x003366)
-                .setTitle('🏈 Final Score')
-                .setDescription(`**${data.homeTeam}** ${data.homeScore} - ${data.awayScore} **${data.awayTeam}**`)
-                .setFooter({ text: 'NJCAA Website Update' })
-                .setTimestamp();
-        }
-
-        if (embed) {
-            await channel.send({ embeds: [embed] });
-        }
-        
-        client.destroy();
-    } catch (error) {
-        console.error('Discord notification error:', error);
     }
 }
 
@@ -176,7 +130,7 @@ async function sendDiscordNotification(type, data) {
 // ============================================
 
 app.get('/auth/discord', (req, res) => {
-    res.redirect(OAUTH_URL);
+    res.redirect(getOAuthUrl());
 });
 
 app.get('/auth/discord/callback', async (req, res) => {
@@ -184,6 +138,8 @@ app.get('/auth/discord/callback', async (req, res) => {
     if (!code) return res.redirect('/?error=no_code');
 
     try {
+        const redirectUri = process.env.DISCORD_REDIRECT_URI || 'http://localhost:3000/auth/discord/callback';
+        
         // Exchange code for token
         const tokenRes = await fetch(`${DISCORD_API}/oauth2/token`, {
             method: 'POST',
@@ -193,12 +149,13 @@ app.get('/auth/discord/callback', async (req, res) => {
                 client_secret: process.env.DISCORD_CLIENT_SECRET,
                 grant_type: 'authorization_code',
                 code,
-                redirect_uri: process.env.DISCORD_REDIRECT_URI
+                redirect_uri: redirectUri
             })
         });
         const tokens = await tokenRes.json();
 
         if (!tokens.access_token) {
+            console.error('Token exchange failed:', tokens);
             return res.redirect('/?error=token_failed');
         }
 
@@ -278,6 +235,16 @@ app.get('/api/teams', (req, res) => {
     res.json(readData('teams'));
 });
 
+app.get('/api/teams/:id', (req, res) => {
+    const teams = readData('teams');
+    const team = teams.find(t => t.id === req.params.id);
+    if (team) {
+        res.json(team);
+    } else {
+        res.status(404).json({ error: 'Team not found' });
+    }
+});
+
 app.get('/api/slides', (req, res) => {
     res.json(readData('slides'));
 });
@@ -287,162 +254,250 @@ app.get('/api/settings', (req, res) => {
 });
 
 // ============================================
-// ADMIN API ROUTES
+// ADMIN API ROUTES - TEAMS
 // ============================================
 
-// Articles
-app.post('/api/admin/articles', requireAdmin, upload.single('image'), async (req, res) => {
-    const articles = readData('articles');
-    const newArticle = {
-        id: uuidv4(),
-        title: req.body.title,
-        content: req.body.content,
-        image: req.file ? `/uploads/${req.file.filename}` : req.body.imageUrl,
-        date: new Date().toISOString(),
-        author: req.session.user.username
-    };
-    articles.push(newArticle);
-    writeData('articles', articles);
-    
-    await sendDiscordNotification('article', newArticle);
-    res.json(newArticle);
-});
-
-app.put('/api/admin/articles/:id', requireAdmin, upload.single('image'), (req, res) => {
-    const articles = readData('articles');
-    const index = articles.findIndex(a => a.id === req.params.id);
-    if (index === -1) return res.status(404).json({ error: 'Not found' });
-    
-    articles[index] = {
-        ...articles[index],
-        title: req.body.title || articles[index].title,
-        content: req.body.content || articles[index].content,
-        image: req.file ? `/uploads/${req.file.filename}` : (req.body.imageUrl || articles[index].image)
-    };
-    writeData('articles', articles);
-    res.json(articles[index]);
-});
-
-app.delete('/api/admin/articles/:id', requireAdmin, (req, res) => {
-    let articles = readData('articles');
-    articles = articles.filter(a => a.id !== req.params.id);
-    writeData('articles', articles);
-    res.json({ success: true });
-});
-
-// Games
-app.post('/api/admin/games', requireAdmin, async (req, res) => {
-    const games = readData('games');
-    const newGame = {
-        id: uuidv4(),
-        homeTeam: req.body.homeTeam,
-        awayTeam: req.body.awayTeam,
-        homeScore: req.body.homeScore || null,
-        awayScore: req.body.awayScore || null,
-        date: req.body.date,
-        time: req.body.time,
-        venue: req.body.venue,
-        status: req.body.status || 'scheduled'
-    };
-    games.push(newGame);
-    writeData('games', games);
-    
-    await sendDiscordNotification('game', newGame);
-    res.json(newGame);
-});
-
-app.put('/api/admin/games/:id', requireAdmin, async (req, res) => {
-    const games = readData('games');
-    const index = games.findIndex(g => g.id === req.params.id);
-    if (index === -1) return res.status(404).json({ error: 'Not found' });
-    
-    const wasScheduled = games[index].status === 'scheduled';
-    games[index] = { ...games[index], ...req.body };
-    writeData('games', games);
-    
-    // Send notification if game finished
-    if (wasScheduled && req.body.status === 'final') {
-        await sendDiscordNotification('score', games[index]);
+app.post('/api/admin/teams', requireAdmin, (req, res) => {
+    try {
+        const teams = readData('teams');
+        const newTeam = {
+            id: uuidv4(),
+            name: req.body.name,
+            abbreviation: req.body.abbreviation || '',
+            nickname: req.body.nickname || '',
+            logo: req.body.logo || req.body.logoUrl || '',
+            conference: req.body.conference || '',
+            location: req.body.location || '',
+            athleticDirector: req.body.athleticDirector || '',
+            headCoach: req.body.headCoach || ''
+        };
+        teams.push(newTeam);
+        writeData('teams', teams);
+        res.json(newTeam);
+    } catch (error) {
+        console.error('Error creating team:', error);
+        res.status(500).json({ error: 'Failed to create team' });
     }
-    
-    res.json(games[index]);
 });
 
-app.delete('/api/admin/games/:id', requireAdmin, (req, res) => {
-    let games = readData('games');
-    games = games.filter(g => g.id !== req.params.id);
-    writeData('games', games);
-    res.json({ success: true });
-});
-
-// Teams
-app.post('/api/admin/teams', requireAdmin, upload.single('logo'), (req, res) => {
-    const teams = readData('teams');
-    const newTeam = {
-        id: uuidv4(),
-        name: req.body.name,
-        abbreviation: req.body.abbreviation,
-        logo: req.file ? `/uploads/${req.file.filename}` : req.body.logoUrl,
-        conference: req.body.conference,
-        location: req.body.location
-    };
-    teams.push(newTeam);
-    writeData('teams', teams);
-    res.json(newTeam);
-});
-
-app.put('/api/admin/teams/:id', requireAdmin, upload.single('logo'), (req, res) => {
-    const teams = readData('teams');
-    const index = teams.findIndex(t => t.id === req.params.id);
-    if (index === -1) return res.status(404).json({ error: 'Not found' });
-    
-    teams[index] = {
-        ...teams[index],
-        ...req.body,
-        logo: req.file ? `/uploads/${req.file.filename}` : (req.body.logoUrl || teams[index].logo)
-    };
-    writeData('teams', teams);
-    res.json(teams[index]);
+app.put('/api/admin/teams/:id', requireAdmin, (req, res) => {
+    try {
+        const teams = readData('teams');
+        const index = teams.findIndex(t => t.id === req.params.id);
+        if (index === -1) return res.status(404).json({ error: 'Team not found' });
+        
+        teams[index] = {
+            ...teams[index],
+            name: req.body.name ?? teams[index].name,
+            abbreviation: req.body.abbreviation ?? teams[index].abbreviation,
+            nickname: req.body.nickname ?? teams[index].nickname,
+            logo: req.body.logo || req.body.logoUrl || teams[index].logo,
+            conference: req.body.conference ?? teams[index].conference,
+            location: req.body.location ?? teams[index].location,
+            athleticDirector: req.body.athleticDirector ?? teams[index].athleticDirector,
+            headCoach: req.body.headCoach ?? teams[index].headCoach
+        };
+        writeData('teams', teams);
+        res.json(teams[index]);
+    } catch (error) {
+        console.error('Error updating team:', error);
+        res.status(500).json({ error: 'Failed to update team' });
+    }
 });
 
 app.delete('/api/admin/teams/:id', requireAdmin, (req, res) => {
-    let teams = readData('teams');
-    teams = teams.filter(t => t.id !== req.params.id);
-    writeData('teams', teams);
-    res.json({ success: true });
+    try {
+        let teams = readData('teams');
+        const initialLength = teams.length;
+        teams = teams.filter(t => t.id !== req.params.id);
+        
+        if (teams.length === initialLength) {
+            return res.status(404).json({ error: 'Team not found' });
+        }
+        
+        writeData('teams', teams);
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Error deleting team:', error);
+        res.status(500).json({ error: 'Failed to delete team' });
+    }
 });
 
-// Slides
-app.post('/api/admin/slides', requireAdmin, upload.single('image'), (req, res) => {
-    const slides = readData('slides');
-    const newSlide = {
-        id: uuidv4(),
-        title: req.body.title,
-        subtitle: req.body.subtitle,
-        image: req.file ? `/uploads/${req.file.filename}` : req.body.imageUrl,
-        link: req.body.link,
-        date: new Date().toISOString()
-    };
-    slides.push(newSlide);
-    writeData('slides', slides);
-    res.json(newSlide);
+// ============================================
+// ADMIN API ROUTES - GAMES
+// ============================================
+
+app.post('/api/admin/games', requireAdmin, (req, res) => {
+    try {
+        const games = readData('games');
+        const newGame = {
+            id: uuidv4(),
+            homeTeam: req.body.homeTeam,
+            awayTeam: req.body.awayTeam,
+            homeScore: req.body.homeScore || null,
+            awayScore: req.body.awayScore || null,
+            date: req.body.date,
+            time: req.body.time || '',
+            venue: req.body.venue || '',
+            status: req.body.status || 'scheduled'
+        };
+        games.push(newGame);
+        writeData('games', games);
+        res.json(newGame);
+    } catch (error) {
+        console.error('Error creating game:', error);
+        res.status(500).json({ error: 'Failed to create game' });
+    }
+});
+
+app.put('/api/admin/games/:id', requireAdmin, (req, res) => {
+    try {
+        const games = readData('games');
+        const index = games.findIndex(g => g.id === req.params.id);
+        if (index === -1) return res.status(404).json({ error: 'Game not found' });
+        
+        games[index] = {
+            ...games[index],
+            homeTeam: req.body.homeTeam ?? games[index].homeTeam,
+            awayTeam: req.body.awayTeam ?? games[index].awayTeam,
+            homeScore: req.body.homeScore ?? games[index].homeScore,
+            awayScore: req.body.awayScore ?? games[index].awayScore,
+            date: req.body.date ?? games[index].date,
+            time: req.body.time ?? games[index].time,
+            venue: req.body.venue ?? games[index].venue,
+            status: req.body.status ?? games[index].status
+        };
+        writeData('games', games);
+        res.json(games[index]);
+    } catch (error) {
+        console.error('Error updating game:', error);
+        res.status(500).json({ error: 'Failed to update game' });
+    }
+});
+
+app.delete('/api/admin/games/:id', requireAdmin, (req, res) => {
+    try {
+        let games = readData('games');
+        games = games.filter(g => g.id !== req.params.id);
+        writeData('games', games);
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Error deleting game:', error);
+        res.status(500).json({ error: 'Failed to delete game' });
+    }
+});
+
+// ============================================
+// ADMIN API ROUTES - ARTICLES
+// ============================================
+
+app.post('/api/admin/articles', requireAdmin, (req, res) => {
+    try {
+        const articles = readData('articles');
+        const newArticle = {
+            id: uuidv4(),
+            title: req.body.title,
+            content: req.body.content,
+            image: req.body.image || req.body.imageUrl || '',
+            date: new Date().toISOString(),
+            author: req.session.user.username
+        };
+        articles.push(newArticle);
+        writeData('articles', articles);
+        res.json(newArticle);
+    } catch (error) {
+        console.error('Error creating article:', error);
+        res.status(500).json({ error: 'Failed to create article' });
+    }
+});
+
+app.put('/api/admin/articles/:id', requireAdmin, (req, res) => {
+    try {
+        const articles = readData('articles');
+        const index = articles.findIndex(a => a.id === req.params.id);
+        if (index === -1) return res.status(404).json({ error: 'Article not found' });
+        
+        articles[index] = {
+            ...articles[index],
+            title: req.body.title ?? articles[index].title,
+            content: req.body.content ?? articles[index].content,
+            image: req.body.image || req.body.imageUrl || articles[index].image
+        };
+        writeData('articles', articles);
+        res.json(articles[index]);
+    } catch (error) {
+        console.error('Error updating article:', error);
+        res.status(500).json({ error: 'Failed to update article' });
+    }
+});
+
+app.delete('/api/admin/articles/:id', requireAdmin, (req, res) => {
+    try {
+        let articles = readData('articles');
+        articles = articles.filter(a => a.id !== req.params.id);
+        writeData('articles', articles);
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Error deleting article:', error);
+        res.status(500).json({ error: 'Failed to delete article' });
+    }
+});
+
+// ============================================
+// ADMIN API ROUTES - SLIDES
+// ============================================
+
+app.post('/api/admin/slides', requireAdmin, (req, res) => {
+    try {
+        const slides = readData('slides');
+        const newSlide = {
+            id: uuidv4(),
+            title: req.body.title,
+            subtitle: req.body.subtitle || '',
+            image: req.body.image || req.body.imageUrl || '',
+            link: req.body.link || '',
+            date: new Date().toISOString()
+        };
+        slides.push(newSlide);
+        writeData('slides', slides);
+        res.json(newSlide);
+    } catch (error) {
+        console.error('Error creating slide:', error);
+        res.status(500).json({ error: 'Failed to create slide' });
+    }
 });
 
 app.delete('/api/admin/slides/:id', requireAdmin, (req, res) => {
-    let slides = readData('slides');
-    slides = slides.filter(s => s.id !== req.params.id);
-    writeData('slides', slides);
-    res.json({ success: true });
+    try {
+        let slides = readData('slides');
+        slides = slides.filter(s => s.id !== req.params.id);
+        writeData('slides', slides);
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Error deleting slide:', error);
+        res.status(500).json({ error: 'Failed to delete slide' });
+    }
 });
 
-// Settings
+// ============================================
+// ADMIN API ROUTES - SETTINGS
+// ============================================
+
 app.put('/api/admin/settings', requireAdmin, (req, res) => {
-    const settings = { ...readData('settings'), ...req.body };
-    writeData('settings', settings);
-    res.json(settings);
+    try {
+        const settings = { ...readData('settings'), ...req.body };
+        writeData('settings', settings);
+        res.json(settings);
+    } catch (error) {
+        console.error('Error updating settings:', error);
+        res.status(500).json({ error: 'Failed to update settings' });
+    }
 });
 
-// Upload endpoint
+// ============================================
+// FILE UPLOAD
+// ============================================
+
 app.post('/api/admin/upload', requireAdmin, upload.single('file'), (req, res) => {
     if (req.file) {
         res.json({ url: `/uploads/${req.file.filename}` });
@@ -452,10 +507,19 @@ app.post('/api/admin/upload', requireAdmin, upload.single('file'), (req, res) =>
 });
 
 // ============================================
+// HEALTH CHECK
+// ============================================
+
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// ============================================
 // START SERVER
 // ============================================
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`🏈 NJCAA Website running on http://localhost:${PORT}`);
+    console.log(`🏈 NJCAA Roblox Football League running on http://localhost:${PORT}`);
+    console.log(`📊 Admin panel: http://localhost:${PORT}/admin.html`);
 });

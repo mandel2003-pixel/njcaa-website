@@ -8,167 +8,631 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/pages.css">
     <style>
-        .team-hero {
-            background: linear-gradient(135deg, #003366 0%, #001a33 100%);
-            padding: 80px 0;
-            color: white;
-            text-align: center;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #003366;
+            --primary-dark: #001a33;
+            --primary-light: #0055a4;
+            --accent: #00a3e0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
         }
-        .team-hero-content {
-            max-width: 800px;
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--gray-100);
+            min-height: 100vh;
+            color: var(--gray-800);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-dark);
+            padding: 10px 0;
+        }
+        
+        .top-bar-content {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .team-logo {
-            width: 120px;
-            height: 120px;
+        
+        .top-bar-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 2px;
+        }
+        
+        .top-bar-nav {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .top-bar-nav a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+        
+        .top-bar-nav a:hover {
+            color: white;
+        }
+
+        /* Main Header */
+        .main-header {
             background: white;
-            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .main-logo {
+            height: 50px;
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .nav-link {
+            font-family: 'Oswald', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-700);
+            text-decoration: none;
+            letter-spacing: 1px;
+            padding: 8px 0;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Team Hero */
+        .team-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1920') center/cover;
+            opacity: 0.15;
+        }
+        
+        .team-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .team-logo-large {
+            width: 160px;
+            height: 160px;
+            background: white;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
             font-family: 'Oswald', sans-serif;
-            font-size: 48px;
+            font-size: 56px;
             font-weight: 700;
-            color: #003366;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            flex-shrink: 0;
         }
-        .team-logo img {
-            max-width: 80%;
-            max-height: 80%;
+        
+        .team-logo-large img {
+            max-width: 75%;
+            max-height: 75%;
             object-fit: contain;
         }
-        .team-name {
-            font-family: 'Oswald', sans-serif;
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 8px;
+        
+        .team-hero-info {
+            color: white;
         }
-        .team-nickname {
-            font-size: 24px;
-            opacity: 0.8;
-            margin-bottom: 16px;
-        }
-        .team-region {
-            display: inline-block;
+        
+        .team-region-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: rgba(255,255,255,0.2);
-            padding: 8px 20px;
+            padding: 8px 16px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
         }
+        
+        .team-name-large {
+            font-family: 'Oswald', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .team-nickname-large {
+            font-size: 24px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .team-location-large {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            opacity: 0.85;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .breadcrumb-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: var(--gray-400);
+        }
+        
+        .breadcrumb .current {
+            color: var(--gray-600);
+        }
+
+        /* Main Content */
         .team-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 40px 24px;
         }
+        
         .team-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 2fr 1fr;
             gap: 30px;
         }
-        .team-card {
+
+        /* Cards */
+        .card {
             background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
         }
-        .team-card h3 {
-            font-family: 'Oswald', sans-serif;
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--gray-50) 0%, white 100%);
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .card-header i {
             font-size: 20px;
-            margin-bottom: 20px;
-            color: #003366;
+            color: var(--primary);
+        }
+        
+        .card-header h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gray-800);
+            letter-spacing: 0.5px;
+        }
+        
+        .card-body {
+            padding: 24px;
+        }
+
+        /* Info Rows */
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-size: 14px;
+            color: var(--gray-500);
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
+        
+        .info-label i {
+            width: 20px;
+            color: var(--primary);
         }
-        .info-row:last-child {
-            border-bottom: none;
-        }
-        .info-label {
-            color: #666;
-            font-size: 14px;
-        }
+        
         .info-value {
+            font-size: 15px;
             font-weight: 600;
-            color: #333;
+            color: var(--gray-800);
         }
-        .info-value.available {
-            color: #10b981;
+
+        /* Staff Section */
+        .staff-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
-        .info-value.needed {
-            color: #f59e0b;
-        }
-        .staff-member {
+        
+        .staff-card {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
+            gap: 16px;
+            padding: 20px;
+            background: var(--gray-50);
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.2s;
         }
-        .staff-member:last-child {
-            border-bottom: none;
+        
+        .staff-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0,51,102,0.1);
         }
+        
         .staff-avatar {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #003366, #0066cc);
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: 600;
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            flex-shrink: 0;
         }
+        
+        .staff-avatar.empty {
+            background: var(--gray-300);
+        }
+        
+        .staff-info {
+            flex: 1;
+        }
+        
         .staff-info h4 {
             font-size: 16px;
+            font-weight: 600;
+            color: var(--gray-800);
             margin-bottom: 4px;
         }
+        
+        .staff-info h4.open {
+            color: var(--warning);
+        }
+        
         .staff-info p {
             font-size: 13px;
-            color: #666;
+            color: var(--gray-500);
         }
-        .back-link {
+        
+        .staff-badge {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .staff-badge.filled {
+            background: rgba(16,185,129,0.1);
+            color: var(--success);
+        }
+        
+        .staff-badge.open {
+            background: rgba(245,158,11,0.1);
+            color: var(--warning);
+        }
+
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .quick-stat {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .quick-stat-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .quick-stat-label {
+            font-size: 12px;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* CTA Card */
+        .cta-card {
+            background: linear-gradient(135deg, #5865F2 0%, #4752c4 100%);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-card h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .cta-card p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .cta-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: #003366;
+            background: white;
+            color: #5865F2;
+            padding: 12px 24px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: 500;
-            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
         }
-        .back-link:hover {
-            text-decoration: underline;
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
+
+        /* Footer */
+        .main-footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 60px 24px 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-brand h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .footer-brand p {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        .footer-logo {
+            height: 60px;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+        
+        .footer-bottom {
+            width: 100%;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+        /* Not Found */
         .not-found {
             text-align: center;
-            padding: 100px 20px;
+            padding: 120px 24px;
         }
-        .not-found h2 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 32px;
-            margin-bottom: 16px;
-        }
-        .not-found p {
-            color: #666;
+        
+        .not-found i {
+            font-size: 64px;
+            color: var(--gray-300);
             margin-bottom: 24px;
         }
-        @media (max-width: 768px) {
+        
+        .not-found h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            margin-bottom: 12px;
+            color: var(--gray-700);
+        }
+        
+        .not-found p {
+            color: var(--gray-500);
+            margin-bottom: 32px;
+            font-size: 16px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .back-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Loading */
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 24px;
+        }
+        
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--gray-200);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-container p {
+            margin-top: 16px;
+            color: var(--gray-500);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
             .team-grid {
                 grid-template-columns: 1fr;
             }
-            .team-name {
+        }
+        
+        @media (max-width: 768px) {
+            .top-bar-nav {
+                display: none;
+            }
+            
+            .main-nav {
+                display: none;
+            }
+            
+            .team-hero {
+                padding: 50px 24px;
+            }
+            
+            .team-hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .team-logo-large {
+                width: 120px;
+                height: 120px;
+                font-size: 42px;
+            }
+            
+            .team-name-large {
                 font-size: 36px;
+            }
+            
+            .team-nickname-large {
+                font-size: 18px;
+            }
+            
+            .team-location-large {
+                justify-content: center;
+            }
+            
+            .quick-stats {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -191,9 +655,7 @@
     <!-- Main Header -->
     <header class="main-header">
         <div class="header-content">
-            <div class="logo-section">
-                <a href="/"><img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA" class="main-logo"></a>
-            </div>
+            <a href="/"><img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA" class="main-logo"></a>
             <nav class="main-nav">
                 <a href="/teams.html" class="nav-link active">PROGRAMS</a>
                 <a href="/championships.html" class="nav-link">CHAMPIONSHIPS</a>
@@ -204,9 +666,10 @@
         </div>
     </header>
 
-    <!-- Team Content -->
-    <div id="teamContent">
-        <div class="loading" style="padding: 100px; text-align: center;">
+    <!-- Dynamic Content -->
+    <div id="pageContent">
+        <div class="loading-container">
+            <div class="spinner"></div>
             <p>Loading team...</p>
         </div>
     </div>
@@ -215,24 +678,17 @@
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-brand">
-                <img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA" class="footer-logo">
+                <h3>NJCAA ROBLOX</h3>
                 <p>The Premier Roblox Football Experience</p>
             </div>
-            <div class="footer-links">
-                <a href="/teams.html">Programs</a>
-                <a href="/championships.html">Championships</a>
-                <a href="/membership.html">Join League</a>
-                <a href="/about.html">About</a>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 NJCAA Roblox Football League</p>
-                <p>Founded by WRBEAST990, SaintJayden, Marcel & Grayson</p>
-            </div>
+            <img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA" class="footer-logo">
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NJCAA Roblox Football League • Founded by WRBEAST990, SaintJayden, Marcel & Grayson</p>
         </div>
     </footer>
 
     <script>
-        // Get team ID from URL
         const urlParams = new URLSearchParams(window.location.search);
         const teamId = urlParams.get('id');
 
@@ -252,7 +708,22 @@
                     return;
                 }
 
-                renderTeam(team);
+                // Get games for record
+                const gamesRes = await fetch('/api/games');
+                const games = await gamesRes.json();
+                
+                let wins = 0, losses = 0;
+                games.filter(g => g.status === 'final').forEach(game => {
+                    if (game.homeTeam === team.name || game.awayTeam === team.name) {
+                        const isHome = game.homeTeam === team.name;
+                        const teamScore = isHome ? game.homeScore : game.awayScore;
+                        const oppScore = isHome ? game.awayScore : game.homeScore;
+                        if (teamScore > oppScore) wins++;
+                        else if (teamScore < oppScore) losses++;
+                    }
+                });
+
+                renderTeam(team, wins, losses);
                 document.title = `${team.name} | NJCAA Roblox Football`;
             } catch (error) {
                 console.error('Error loading team:', error);
@@ -260,71 +731,151 @@
             }
         }
 
-        function renderTeam(team) {
-            const initials = team.name.split(' ').map(w => w[0]).join('').substring(0, 2);
+        function renderTeam(team, wins, losses) {
+            const initials = team.abbreviation || team.name.split(' ').map(w => w[0]).join('').substring(0, 2);
+            const regionClass = team.conference?.includes('East') ? 'East' : 'South';
+            const hasAD = team.athleticDirector && team.athleticDirector.trim() !== '';
+            const hasHC = team.headCoach && team.headCoach.trim() !== '';
             
-            document.getElementById('teamContent').innerHTML = `
-                <div class="team-hero">
+            document.getElementById('pageContent').innerHTML = `
+                <!-- Team Hero -->
+                <section class="team-hero">
                     <div class="team-hero-content">
-                        <div class="team-logo">
+                        <div class="team-logo-large">
                             ${team.logo ? `<img src="${team.logo}" alt="${team.name}">` : initials}
                         </div>
-                        <h1 class="team-name">${team.name}</h1>
-                        ${team.nickname ? `<p class="team-nickname">${team.nickname}</p>` : ''}
-                        <span class="team-region"><i class="fas fa-map-marker-alt"></i> ${team.conference || 'NJCAA'}</span>
+                        <div class="team-hero-info">
+                            <span class="team-region-badge">
+                                <i class="fas fa-${regionClass === 'East' ? 'compass' : 'sun'}"></i>
+                                ${team.conference || 'NJCAA'}
+                            </span>
+                            <h1 class="team-name-large">${team.name}</h1>
+                            ${team.nickname ? `<p class="team-nickname-large">${team.nickname}</p>` : ''}
+                            <p class="team-location-large">
+                                <i class="fas fa-map-marker-alt"></i>
+                                ${team.location || 'Location TBD'}
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <div class="breadcrumb-content">
+                        <a href="/"><i class="fas fa-home"></i></a>
+                        <span>/</span>
+                        <a href="/teams.html">Programs</a>
+                        <span>/</span>
+                        <span class="current">${team.name}</span>
                     </div>
                 </div>
 
+                <!-- Content -->
                 <div class="team-content">
-                    <a href="/teams.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Programs</a>
-                    
                     <div class="team-grid">
-                        <div class="team-card">
-                            <h3><i class="fas fa-info-circle"></i> Team Information</h3>
-                            <div class="info-row">
-                                <span class="info-label">Full Name</span>
-                                <span class="info-value">${team.name}</span>
+                        <!-- Main Column -->
+                        <div class="main-column">
+                            <!-- Team Info Card -->
+                            <div class="card" style="margin-bottom: 24px;">
+                                <div class="card-header">
+                                    <i class="fas fa-info-circle"></i>
+                                    <h3>TEAM INFORMATION</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="info-row">
+                                        <span class="info-label"><i class="fas fa-shield-alt"></i> Full Name</span>
+                                        <span class="info-value">${team.name}</span>
+                                    </div>
+                                    ${team.nickname ? `
+                                    <div class="info-row">
+                                        <span class="info-label"><i class="fas fa-paw"></i> Nickname</span>
+                                        <span class="info-value">${team.nickname}</span>
+                                    </div>` : ''}
+                                    ${team.abbreviation ? `
+                                    <div class="info-row">
+                                        <span class="info-label"><i class="fas fa-hashtag"></i> Abbreviation</span>
+                                        <span class="info-value">${team.abbreviation}</span>
+                                    </div>` : ''}
+                                    <div class="info-row">
+                                        <span class="info-label"><i class="fas fa-globe-americas"></i> Region</span>
+                                        <span class="info-value">${team.conference || 'Unassigned'}</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label"><i class="fas fa-map-marker-alt"></i> Location</span>
+                                        <span class="info-value">${team.location || 'TBD'}</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label"><i class="fas fa-trophy"></i> Season Record</span>
+                                        <span class="info-value">${wins}-${losses}</span>
+                                    </div>
+                                </div>
                             </div>
-                            ${team.nickname ? `
-                            <div class="info-row">
-                                <span class="info-label">Nickname</span>
-                                <span class="info-value">${team.nickname}</span>
-                            </div>` : ''}
-                            ${team.abbreviation ? `
-                            <div class="info-row">
-                                <span class="info-label">Abbreviation</span>
-                                <span class="info-value">${team.abbreviation}</span>
-                            </div>` : ''}
-                            <div class="info-row">
-                                <span class="info-label">Region</span>
-                                <span class="info-value">${team.conference || 'Unassigned'}</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">Location</span>
-                                <span class="info-value">${team.location || 'TBD'}</span>
+
+                            <!-- Staff Card -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <i class="fas fa-users"></i>
+                                    <h3>COACHING STAFF</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="staff-grid">
+                                        <div class="staff-card">
+                                            <div class="staff-avatar ${hasAD ? '' : 'empty'}">
+                                                ${hasAD ? team.athleticDirector.charAt(0).toUpperCase() : '?'}
+                                            </div>
+                                            <div class="staff-info">
+                                                <h4 class="${hasAD ? '' : 'open'}">${hasAD ? team.athleticDirector : 'Position Available'}</h4>
+                                                <p>Athletic Director</p>
+                                            </div>
+                                            <span class="staff-badge ${hasAD ? 'filled' : 'open'}">${hasAD ? 'Active' : 'Open'}</span>
+                                        </div>
+                                        <div class="staff-card">
+                                            <div class="staff-avatar ${hasHC ? '' : 'empty'}">
+                                                ${hasHC ? team.headCoach.charAt(0).toUpperCase() : '?'}
+                                            </div>
+                                            <div class="staff-info">
+                                                <h4 class="${hasHC ? '' : 'open'}">${hasHC ? team.headCoach : 'Position Available'}</h4>
+                                                <p>Head Coach</p>
+                                            </div>
+                                            <span class="staff-badge ${hasHC ? 'filled' : 'open'}">${hasHC ? 'Active' : 'Open'}</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="team-card">
-                            <h3><i class="fas fa-users"></i> Staff</h3>
-                            <div class="staff-member">
-                                <div class="staff-avatar">
-                                    ${team.athleticDirector ? team.athleticDirector.charAt(0).toUpperCase() : '?'}
+                        <!-- Sidebar -->
+                        <div class="sidebar-column">
+                            <!-- Quick Stats -->
+                            <div class="quick-stats">
+                                <div class="quick-stat">
+                                    <div class="quick-stat-value">${wins}</div>
+                                    <div class="quick-stat-label">Wins</div>
                                 </div>
-                                <div class="staff-info">
-                                    <h4>${team.athleticDirector || '<span class="needed">Position Available</span>'}</h4>
-                                    <p>Athletic Director</p>
-                                </div>
-                            </div>
-                            <div class="staff-member">
-                                <div class="staff-avatar">
-                                    ${team.headCoach ? team.headCoach.charAt(0).toUpperCase() : '?'}
-                                </div>
-                                <div class="staff-info">
-                                    <h4>${team.headCoach || '<span class="needed">Position Available</span>'}</h4>
-                                    <p>Head Coach</p>
+                                <div class="quick-stat">
+                                    <div class="quick-stat-value">${losses}</div>
+                                    <div class="quick-stat-label">Losses</div>
                                 </div>
                             </div>
+
+                            <!-- CTA Card -->
+                            ${(!hasAD || !hasHC) ? `
+                            <div class="cta-card">
+                                <h4><i class="fab fa-discord"></i> JOIN THIS TEAM</h4>
+                                <p>${!hasHC ? 'Head Coach position is available!' : ''} ${!hasAD ? 'Athletic Director position is available!' : ''}</p>
+                                <a href="https://discord.gg/DAs2Y27BWV" target="_blank" class="cta-btn">
+                                    <i class="fab fa-discord"></i> Apply on Discord
+                                </a>
+                            </div>
+                            ` : `
+                            <div class="cta-card">
+                                <h4><i class="fas fa-gamepad"></i> JOIN AS PLAYER</h4>
+                                <p>Want to play for the ${team.nickname || team.name}? Join our Discord!</p>
+                                <a href="https://discord.gg/GNMD7wwvgW" target="_blank" class="cta-btn">
+                                    <i class="fab fa-discord"></i> Join Discord
+                                </a>
+                            </div>
+                            `}
                         </div>
                     </div>
                 </div>
@@ -332,11 +883,14 @@
         }
 
         function showNotFound() {
-            document.getElementById('teamContent').innerHTML = `
+            document.getElementById('pageContent').innerHTML = `
                 <div class="not-found">
+                    <i class="fas fa-search"></i>
                     <h2>Team Not Found</h2>
                     <p>The team you're looking for doesn't exist or has been removed.</p>
-                    <a href="/teams.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Programs</a>
+                    <a href="/teams.html" class="back-btn">
+                        <i class="fas fa-arrow-left"></i> Back to Programs
+                    </a>
                 </div>
             `;
         }

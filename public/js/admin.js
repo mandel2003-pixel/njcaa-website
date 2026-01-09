@@ -28,19 +28,26 @@ async function checkAuth() {
         if (res.ok) {
             currentUser = await res.json();
             if (!currentUser.isAdmin) {
-                showError('You do not have admin access');
-                setTimeout(() => window.location.href = '/', 2000);
+                showLoginRequired('You do not have admin access. Please contact a league administrator.');
                 return;
             }
+            document.getElementById('adminContent').style.display = 'block';
+            document.getElementById('loginRequired').style.display = 'none';
             showUserInfo();
             loadAllData();
         } else {
-            window.location.href = '/auth/discord';
+            showLoginRequired('Please log in with Discord to access the admin panel.');
         }
     } catch (error) {
         console.error('Auth error:', error);
-        showError('Connection failed. Please refresh the page.');
+        showLoginRequired('Connection error. Please try again.');
     }
+}
+
+function showLoginRequired(message) {
+    document.getElementById('adminContent').style.display = 'none';
+    document.getElementById('loginRequired').style.display = 'flex';
+    document.getElementById('loginMessage').textContent = message;
 }
 
 function showUserInfo() {

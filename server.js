@@ -10,20 +10,29 @@ const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 
+// Trust proxy for Render/Heroku (required for sessions)
+app.set('trust proxy', 1);
+
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: true,
+    credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 
-// Session
+// Session - works with Render
 app.use(session({
     secret: process.env.SESSION_SECRET || 'njcaa-secret-key-change-in-production',
     resave: false,
     saveUninitialized: false,
+    proxy: true,
     cookie: { 
         secure: process.env.NODE_ENV === 'production',
+        httpOnly: true,
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
         maxAge: 7 * 24 * 60 * 60 * 1000 
     }
 }));

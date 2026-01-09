@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Championships | NJCAA Football</title>
+    <title>Championships | NJCAA Roblox Football</title>
     <link rel="icon" type="image/png" href="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/pages.css">
+    <link rel="stylesheet" href="/css/roblox.css">
 </head>
 <body>
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-content">
-            <span class="top-bar-logo">NJCAA</span>
+            <span class="top-bar-logo">NJCAA ROBLOX</span>
             <nav class="top-bar-nav">
-                <a href="/">NJCAA</a>
-                <a href="#">Stats</a>
-                <a href="#">Foundation</a>
+                <a href="/">Home</a>
+                <a href="/teams.html">Programs</a>
+                <a href="/news.html">News</a>
                 <a href="/championships.html">Championships</a>
-                <a href="#">Network</a>
-                <a href="#">Compliance</a>
+                <a href="/about.html">About</a>
             </nav>
         </div>
     </div>
@@ -34,25 +34,21 @@
                 <a href="/"><img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="main-logo"></a>
             </div>
             <nav class="main-nav">
-                <a href="/sports.html" class="nav-link">SPORTS <i class="fas fa-chevron-down"></i></a>
-                <a href="/championships.html" class="nav-link active">CHAMPIONSHIPS</a>
-                <a href="/membership.html" class="nav-link">MEMBERSHIP <i class="fas fa-chevron-down"></i></a>
-                <a href="/about.html" class="nav-link">ABOUT <i class="fas fa-chevron-down"></i></a>
-                <a href="#" class="nav-link">LINKS <i class="fas fa-chevron-down"></i></a>
-                <div class="nav-icons">
-                    <a href="#"><i class="fas fa-th"></i></a>
-                    <a href="#"><i class="fas fa-search"></i></a>
-                </div>
+                <a href="/teams.html" class="nav-link">PROGRAMS</a>
+                <a href="/championships.html" class="nav-link">CHAMPIONSHIPS</a>
+                <a href="/membership.html" class="nav-link">JOIN LEAGUE</a>
+                <a href="/about.html" class="nav-link">ABOUT</a>
+                <a href="/news.html" class="nav-link">NEWS</a>
             </nav>
         </div>
         <div class="sub-header">
             <div class="sub-header-content">
-                <span class="sport-title">FOOTBALL</span>
+                <span class="sport-title">SEASON ONE</span>
                 <nav class="sub-nav">
                     <a href="/news.html">NEWS</a>
                     <a href="/teams.html">TEAMS</a>
-                    <a href="/division1.html">DIVISION I</a>
-                    <a href="/division3.html">DIVISION III</a>
+                    <a href="/teams.html#east">EAST REGION</a>
+                    <a href="/teams.html#south">SOUTH REGION</a>
                     <a href="/championships.html" class="active">CHAMPIONSHIPS</a>
                 </nav>
             </div>
@@ -64,10 +60,10 @@
         <div class="championship-hero-bg"></div>
         <div class="championship-hero-content">
             <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="champ-logo">
-            <h1>NJCAA FOOTBALL</h1>
-            <h2>NATIONAL CHAMPIONSHIPS</h2>
+            <h1>NJCAA ROBLOX</h1>
+            <h2>SEASON ONE CHAMPIONSHIP</h2>
             <div class="champ-divider"></div>
-            <p>The road to glory starts here</p>
+            <p>The Road to Glory Begins Here</p>
         </div>
     </section>
 
@@ -76,10 +72,6 @@
         <div class="breadcrumb-content">
             <a href="/"><i class="fas fa-home"></i> Home</a>
             <span>/</span>
-            <a href="#">Sports</a>
-            <span>/</span>
-            <a href="#">Football</a>
-            <span>/</span>
             <span class="current">Championships</span>
         </div>
     </div>
@@ -87,187 +79,169 @@
     <!-- Main Content -->
     <main class="page-content full-width">
         <div class="content-container wide">
-            <!-- Current Season Section -->
-            <section class="current-championship">
-                <div class="section-header-fancy">
-                    <div class="header-icon"><i class="fas fa-trophy"></i></div>
-                    <h2>2025 NATIONAL CHAMPIONSHIPS</h2>
-                    <p>Division I & Division III Football</p>
+            
+            <!-- Championship Format -->
+            <section class="section-header-fancy">
+                <div class="header-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2>CHAMPIONSHIP FORMAT</h2>
+                <p>How the Season ONE Champion will be crowned</p>
+            </section>
+
+            <div class="championship-cards">
+                <div class="championship-card">
+                    <div class="champ-card-header">
+                        <span class="division-badge">EAST REGION</span>
+                        <h3>East Region Championship</h3>
+                    </div>
+                    <div class="champ-card-body">
+                        <div class="matchup">
+                            <div class="team">
+                                <div class="team-logo-placeholder xlarge">EM</div>
+                                <h4>East Mississippi</h4>
+                            </div>
+                            <div class="vs">
+                                <span>VS</span>
+                                <p class="game-date">TBD</p>
+                            </div>
+                            <div class="team">
+                                <div class="team-logo-placeholder xlarge">EP</div>
+                                <h4>Ellsworth Panthers</h4>
+                            </div>
+                        </div>
+                        <div class="game-info">
+                            <p><i class="fas fa-calendar"></i> Date TBD</p>
+                            <p><i class="fas fa-clock"></i> Time TBD</p>
+                        </div>
+                        <p style="text-align: center; color: var(--njcaa-text-light); font-size: 13px;">Winner advances to Championship Game</p>
+                    </div>
                 </div>
 
-                <div class="championship-cards">
-                    <!-- Division I Championship -->
-                    <div class="championship-card d1">
-                        <div class="champ-card-header">
-                            <span class="division-badge">DIVISION I</span>
-                            <h3>National Championship</h3>
-                        </div>
-                        <div class="champ-card-body">
-                            <div class="matchup">
-                                <div class="team">
-                                    <div class="team-logo-placeholder large">IWCC</div>
-                                    <h4>Iowa Western</h4>
-                                    <p>Reivers</p>
-                                </div>
-                                <div class="vs">
-                                    <span>VS</span>
-                                    <p class="game-date">December 14, 2025</p>
-                                </div>
-                                <div class="team">
-                                    <div class="team-logo-placeholder large">HCC</div>
-                                    <h4>Hutchinson</h4>
-                                    <p>Blue Dragons</p>
-                                </div>
-                            </div>
-                            <div class="game-info">
-                                <p><i class="fas fa-map-marker-alt"></i> Pittsburg, KS</p>
-                                <p><i class="fas fa-clock"></i> 7:00 PM CT</p>
-                                <p><i class="fas fa-tv"></i> ESPN+</p>
-                            </div>
-                            <a href="#" class="btn-championship">Championship Central <i class="fas fa-arrow-right"></i></a>
-                        </div>
+                <div class="championship-card">
+                    <div class="champ-card-header" style="background: linear-gradient(135deg, #744210 0%, #c05621 100%);">
+                        <span class="division-badge d3">SOUTH REGION</span>
+                        <h3>South Region Championship</h3>
                     </div>
+                    <div class="champ-card-body">
+                        <div class="matchup">
+                            <div class="team">
+                                <div class="team-logo-placeholder xlarge">LE</div>
+                                <h4>Laney Eagles</h4>
+                            </div>
+                            <div class="vs">
+                                <span>VS</span>
+                                <p class="game-date">TBD</p>
+                            </div>
+                            <div class="team">
+                                <div class="team-logo-placeholder xlarge">DV</div>
+                                <h4>Diablo Valley</h4>
+                            </div>
+                        </div>
+                        <div class="game-info">
+                            <p><i class="fas fa-calendar"></i> Date TBD</p>
+                            <p><i class="fas fa-clock"></i> Time TBD</p>
+                        </div>
+                        <p style="text-align: center; color: var(--njcaa-text-light); font-size: 13px;">Winner advances to Championship Game</p>
+                    </div>
+                </div>
+            </div>
 
-                    <!-- Division III Championship -->
-                    <div class="championship-card d3">
-                        <div class="champ-card-header">
-                            <span class="division-badge d3">DIVISION III</span>
-                            <h3>National Championship</h3>
+            <!-- National Championship -->
+            <section class="section-header-fancy" style="margin-top: 60px;">
+                <div class="header-icon" style="background: linear-gradient(135deg, var(--njcaa-gold), #d4af37);">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h2>NATIONAL CHAMPIONSHIP</h2>
+                <p>East Region Champion vs South Region Champion</p>
+            </section>
+
+            <div class="championship-cards" style="max-width: 600px; margin: 0 auto;">
+                <div class="championship-card" style="border: 3px solid var(--njcaa-gold);">
+                    <div class="champ-card-header" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d3436 100%);">
+                        <span class="division-badge" style="background: var(--njcaa-gold); color: #1a1a1a;">CHAMPIONSHIP</span>
+                        <h3>Season ONE National Championship</h3>
+                    </div>
+                    <div class="champ-card-body">
+                        <div class="champion-banner">
+                            <i class="fas fa-trophy"></i>
+                            WINNER CROWNED SEASON ONE CHAMPION
                         </div>
-                        <div class="champ-card-body">
-                            <div class="final-score">
-                                <div class="team winner">
-                                    <div class="team-logo-placeholder large">COD</div>
-                                    <h4>College of DuPage</h4>
-                                    <span class="score">36</span>
-                                </div>
-                                <div class="vs">
-                                    <span>FINAL</span>
-                                    <p class="game-date">December 6, 2025</p>
-                                </div>
-                                <div class="team">
-                                    <div class="team-logo-placeholder large">NDSCS</div>
-                                    <h4>ND State College</h4>
-                                    <span class="score">13</span>
-                                </div>
+                        <div class="matchup">
+                            <div class="team">
+                                <div class="team-logo-placeholder xlarge" style="background: linear-gradient(135deg, #1e3a5f, #2c5282);">E</div>
+                                <h4>East Region Winner</h4>
                             </div>
-                            <div class="champion-banner">
-                                <i class="fas fa-crown"></i>
-                                <span>2025 DIII NATIONAL CHAMPIONS</span>
+                            <div class="vs">
+                                <span>VS</span>
+                                <p class="game-date">TBD</p>
                             </div>
-                            <a href="#" class="btn-championship">View Recap <i class="fas fa-arrow-right"></i></a>
+                            <div class="team">
+                                <div class="team-logo-placeholder xlarge" style="background: linear-gradient(135deg, #744210, #c05621);">S</div>
+                                <h4>South Region Winner</h4>
+                            </div>
+                        </div>
+                        <div class="game-info">
+                            <p><i class="fas fa-calendar"></i> End of Season ONE</p>
+                            <p><i class="fas fa-gamepad"></i> Roblox</p>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Participating Teams -->
+            <section class="section-header-fancy" style="margin-top: 60px;">
+                <div class="header-icon">
+                    <i class="fas fa-football"></i>
+                </div>
+                <h2>PARTICIPATING PROGRAMS</h2>
+                <p>All 6 programs competing for the championship</p>
+            </section>
+
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="team-logo-placeholder large">EM</div>
+                    <h3>East Mississippi</h3>
+                    <p>East Region</p>
+                </div>
+                <div class="info-card">
+                    <div class="team-logo-placeholder large">EP</div>
+                    <h3>Ellsworth Panthers</h3>
+                    <p>East Region</p>
+                </div>
+                <div class="info-card">
+                    <div class="team-logo-placeholder large">IP</div>
+                    <h3>Indy Pirates</h3>
+                    <p>East Region</p>
+                </div>
+                <div class="info-card">
+                    <div class="team-logo-placeholder large">LE</div>
+                    <h3>Laney Eagles</h3>
+                    <p>South Region</p>
+                </div>
+                <div class="info-card">
+                    <div class="team-logo-placeholder large">DV</div>
+                    <h3>Diablo Valley Vikings</h3>
+                    <p>South Region</p>
+                </div>
+                <div class="info-card">
+                    <div class="team-logo-placeholder large">SB</div>
+                    <h3>Southwest Bears</h3>
+                    <p>South Region</p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <section class="division-cta" style="margin-top: 60px;">
+                <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="cta-logo" style="filter: brightness(0) invert(1);">
+                <h3>DON'T MISS A GAME</h3>
+                <p>Join our Discord to get notified when championship games are scheduled!</p>
+                <div class="cta-buttons">
+                    <a href="#" class="cta-btn primary"><i class="fab fa-discord"></i> Join Discord</a>
+                    <a href="/teams.html" class="cta-btn">View Programs</a>
                 </div>
             </section>
 
-            <!-- Bracket Section -->
-            <section class="bracket-section">
-                <div class="section-header-fancy">
-                    <div class="header-icon"><i class="fas fa-sitemap"></i></div>
-                    <h2>PLAYOFF BRACKET</h2>
-                    <p>2025 Division I Football Playoffs</p>
-                </div>
-
-                <div class="bracket-container">
-                    <div class="bracket-round">
-                        <h4>Semifinals</h4>
-                        <div class="bracket-game">
-                            <div class="bracket-team winner">Iowa Western <span>41</span></div>
-                            <div class="bracket-team">Tyler JC <span>29</span></div>
-                        </div>
-                        <div class="bracket-game">
-                            <div class="bracket-team winner">Hutchinson <span>27</span></div>
-                            <div class="bracket-team">NW Mississippi <span>0</span></div>
-                        </div>
-                    </div>
-                    <div class="bracket-connector"></div>
-                    <div class="bracket-round championship">
-                        <h4>National Championship</h4>
-                        <div class="bracket-game final">
-                            <div class="bracket-team">Iowa Western</div>
-                            <div class="bracket-team">Hutchinson</div>
-                            <span class="game-time">Dec 14 - 7:00 PM</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Past Champions -->
-            <section class="past-champions">
-                <div class="section-header-fancy">
-                    <div class="header-icon"><i class="fas fa-history"></i></div>
-                    <h2>PAST CHAMPIONS</h2>
-                    <p>A legacy of excellence</p>
-                </div>
-
-                <div class="champions-timeline">
-                    <div class="champion-year">
-                        <div class="year-badge">2024</div>
-                        <div class="champion-info">
-                            <h4>Iowa Western Community College</h4>
-                            <p>Division I National Champions</p>
-                            <span class="score-final">vs. Hutchinson • 35-28</span>
-                        </div>
-                    </div>
-                    <div class="champion-year">
-                        <div class="year-badge">2023</div>
-                        <div class="champion-info">
-                            <h4>New Mexico Military Institute</h4>
-                            <p>Division I National Champions</p>
-                            <span class="score-final">vs. Iowa Western • 31-24</span>
-                        </div>
-                    </div>
-                    <div class="champion-year">
-                        <div class="year-badge">2022</div>
-                        <div class="champion-info">
-                            <h4>Iowa Western Community College</h4>
-                            <p>Division I National Champions</p>
-                            <span class="score-final">vs. New Mexico Military • 27-17</span>
-                        </div>
-                    </div>
-                    <div class="champion-year">
-                        <div class="year-badge">2021</div>
-                        <div class="champion-info">
-                            <h4>Iowa Western Community College</h4>
-                            <p>Division I National Champions</p>
-                            <span class="score-final">vs. Snow College • 28-7</span>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="#" class="view-all-link">View All Past Champions <i class="fas fa-arrow-right"></i></a>
-            </section>
-
-            <!-- Championship Info -->
-            <section class="championship-info-section">
-                <div class="info-cards">
-                    <div class="info-card">
-                        <i class="fas fa-ticket-alt"></i>
-                        <h3>Get Tickets</h3>
-                        <p>Purchase tickets to the National Championship game</p>
-                        <a href="#">Buy Now <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="info-card">
-                        <i class="fas fa-hotel"></i>
-                        <h3>Travel & Stay</h3>
-                        <p>Book hotels and plan your championship trip</p>
-                        <a href="#">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="info-card">
-                        <i class="fas fa-tv"></i>
-                        <h3>Watch Live</h3>
-                        <p>Stream the games live on ESPN+</p>
-                        <a href="#">Watch <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="info-card">
-                        <i class="fas fa-store"></i>
-                        <h3>Official Gear</h3>
-                        <p>Shop championship merchandise</p>
-                        <a href="#">Shop Now <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </section>
         </div>
     </main>
 
@@ -275,14 +249,15 @@
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-left">
-                <h3>NJCAA</h3>
+                <h3>NJCAA ROBLOX</h3>
+                <p class="footer-tagline">The Premier Roblox Football Experience</p>
                 <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
                     <a href="#"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
-                <p>©2026 NJCAA. All rights reserved.</p>
+                <p class="footer-founders">Founded by WRBEAST990, SaintJayden, Marcel & Grayson</p>
+                <p>©2026 NJCAA Roblox Football League.</p>
             </div>
             <div class="footer-logos">
                 <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="footer-logo">

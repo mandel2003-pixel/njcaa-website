@@ -3,27 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NJCAA Football - National Junior College Athletic Association Football News, Scores, and Championships">
-    <title>NJCAA Football | Official Site</title>
+    <meta name="description" content="NJCAA Roblox Football League - The Premier Roblox Football Experience featuring East Region and South Region teams">
+    <title>NJCAA Roblox Football League | Official Site</title>
     <link rel="icon" type="image/png" href="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/roblox.css">
 </head>
 <body>
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-content">
-            <span class="top-bar-logo">NJCAA</span>
+            <span class="top-bar-logo">NJCAA ROBLOX</span>
             <nav class="top-bar-nav">
-                <a href="#">NJCAA</a>
-                <a href="#">Stats</a>
-                <a href="#">Foundation</a>
-                <a href="#">Championships</a>
-                <a href="#">Network</a>
-                <a href="#">Compliance</a>
+                <a href="/">Home</a>
+                <a href="/teams.html">Programs</a>
+                <a href="/news.html">News</a>
+                <a href="/championships.html">Championships</a>
+                <a href="/about.html">About</a>
+                <a href="https://www.roblox.com" target="_blank">Play on Roblox</a>
             </nav>
         </div>
     </div>
@@ -37,11 +38,11 @@
                 </a>
             </div>
             <nav class="main-nav">
-                <a href="#" class="nav-link">SPORTS <i class="fas fa-chevron-down"></i></a>
+                <a href="/teams.html" class="nav-link">PROGRAMS</a>
                 <a href="/championships.html" class="nav-link">CHAMPIONSHIPS</a>
-                <a href="/membership.html" class="nav-link">MEMBERSHIP <i class="fas fa-chevron-down"></i></a>
-                <a href="/about.html" class="nav-link">ABOUT <i class="fas fa-chevron-down"></i></a>
-                <a href="#" class="nav-link">LINKS <i class="fas fa-chevron-down"></i></a>
+                <a href="/membership.html" class="nav-link">JOIN LEAGUE</a>
+                <a href="/about.html" class="nav-link">ABOUT</a>
+                <a href="/news.html" class="nav-link">NEWS</a>
                 <div class="nav-icons">
                     <a href="#" title="Menu"><i class="fas fa-th"></i></a>
                     <a href="#" title="Search"><i class="fas fa-search"></i></a>
@@ -50,12 +51,12 @@
         </div>
         <div class="sub-header">
             <div class="sub-header-content">
-                <span class="sport-title">FOOTBALL</span>
+                <span class="sport-title">SEASON ONE</span>
                 <nav class="sub-nav">
                     <a href="/news.html">NEWS</a>
                     <a href="/teams.html">TEAMS</a>
-                    <a href="/division1.html">DIVISION I</a>
-                    <a href="/division3.html">DIVISION III</a>
+                    <a href="/teams.html#east">EAST REGION</a>
+                    <a href="/teams.html#south">SOUTH REGION</a>
                     <a href="/championships.html">CHAMPIONSHIPS</a>
                 </nav>
             </div>
@@ -89,13 +90,126 @@
         </div>
     </section>
 
+    <!-- League Stats Banner -->
+    <section class="league-stats-banner">
+        <div class="stats-container">
+            <div class="stat-item-banner">
+                <i class="fas fa-football"></i>
+                <span class="stat-value">6</span>
+                <span class="stat-label">Programs</span>
+            </div>
+            <div class="stat-item-banner">
+                <i class="fas fa-map-marker-alt"></i>
+                <span class="stat-value">2</span>
+                <span class="stat-label">Regions</span>
+            </div>
+            <div class="stat-item-banner">
+                <i class="fas fa-trophy"></i>
+                <span class="stat-value">1</span>
+                <span class="stat-label">Season</span>
+            </div>
+            <div class="stat-item-banner">
+                <i class="fas fa-gamepad"></i>
+                <span class="stat-value">Roblox</span>
+                <span class="stat-label">Platform</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teams Section -->
+    <section class="teams-section">
+        <h2 class="section-title">OFFICIAL PROGRAMS</h2>
+        
+        <!-- East Region -->
+        <div class="region-container">
+            <div class="region-header east">
+                <i class="fas fa-compass"></i>
+                <h3>EAST REGION</h3>
+            </div>
+            <div class="teams-row">
+                <div class="team-card-home">
+                    <div class="team-card-logo">
+                        <div class="team-initials">EM</div>
+                    </div>
+                    <div class="team-card-info">
+                        <h4>East Mississippi</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Mayhew Campus</p>
+                        <span class="team-badge">Lions</span>
+                    </div>
+                </div>
+                <div class="team-card-home">
+                    <div class="team-card-logo">
+                        <div class="team-initials">EP</div>
+                    </div>
+                    <div class="team-card-info">
+                        <h4>Ellsworth Panthers</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Ellsworth, Wisconsin</p>
+                        <span class="team-badge">Panthers</span>
+                    </div>
+                </div>
+                <div class="team-card-home">
+                    <div class="team-card-logo">
+                        <div class="team-initials">IP</div>
+                    </div>
+                    <div class="team-card-info">
+                        <h4>Indy Pirates</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Thompson's Station, TN</p>
+                        <span class="team-badge">Pirates</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- South Region -->
+        <div class="region-container">
+            <div class="region-header south">
+                <i class="fas fa-sun"></i>
+                <h3>SOUTH REGION</h3>
+            </div>
+            <div class="teams-row">
+                <div class="team-card-home">
+                    <div class="team-card-logo">
+                        <div class="team-initials">LE</div>
+                    </div>
+                    <div class="team-card-info">
+                        <h4>Laney Eagles</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Wilmington, NC</p>
+                        <span class="team-badge">Eagles</span>
+                    </div>
+                </div>
+                <div class="team-card-home">
+                    <div class="team-card-logo">
+                        <div class="team-initials">DV</div>
+                    </div>
+                    <div class="team-card-info">
+                        <h4>Diablo Valley Vikings</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Pleasant Hill, CA</p>
+                        <span class="team-badge">Vikings</span>
+                    </div>
+                </div>
+                <div class="team-card-home">
+                    <div class="team-card-logo">
+                        <div class="team-initials">SB</div>
+                    </div>
+                    <div class="team-card-info">
+                        <h4>Southwest Bears</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Fort Worth, TX</p>
+                        <span class="team-badge">Bears</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="/teams.html" class="view-more">View All Programs <i class="fas fa-arrow-right"></i></a>
+    </section>
+
     <!-- News Section -->
     <section class="news-section">
         <h2 class="section-title">LATEST NEWS</h2>
         <div class="news-grid" id="newsGrid">
             <div class="loading"></div>
         </div>
-        <a href="#" class="view-more">View All News <i class="fas fa-arrow-right"></i></a>
+        <a href="/news.html" class="view-more">View All News <i class="fas fa-arrow-right"></i></a>
     </section>
 
     <!-- Scoreboard Section -->
@@ -106,14 +220,30 @@
         </div>
     </section>
 
-    <!-- Photos Section -->
-    <section class="photos-section">
-        <div class="photos-slider">
-            <div class="photos-slide active">
-                <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1920&q=80" alt="NJCAA Photos of the Week">
-                <div class="photos-overlay">
-                    <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="photos-logo">
-                    <h2>PHOTOS OF THE WEEK</h2>
+    <!-- Founders Section -->
+    <section class="founders-section">
+        <div class="founders-container">
+            <div class="founders-content">
+                <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="founders-logo">
+                <h2>FOUNDED BY THE COMMUNITY</h2>
+                <p>The NJCAA Roblox Football League was created by passionate football fans to bring the junior college football experience to Roblox.</p>
+                <div class="founders-list">
+                    <div class="founder">
+                        <div class="founder-avatar">W</div>
+                        <span>WRBEAST990</span>
+                    </div>
+                    <div class="founder">
+                        <div class="founder-avatar">S</div>
+                        <span>SaintJayden</span>
+                    </div>
+                    <div class="founder">
+                        <div class="founder-avatar">M</div>
+                        <span>Marcel</span>
+                    </div>
+                    <div class="founder">
+                        <div class="founder-avatar">G</div>
+                        <span>Grayson</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,54 +253,44 @@
     <section class="quick-links-section">
         <div class="quick-links-container">
             <div class="quick-links-list">
-                <a href="#scoreboard" class="quick-link">
-                    NJCAA FOOTBALL SCOREBOARD <i class="fas fa-chevron-right"></i>
+                <a href="/teams.html" class="quick-link">
+                    VIEW ALL PROGRAMS <i class="fas fa-chevron-right"></i>
                 </a>
-                <a href="#" class="quick-link">
-                    NJCAA FOOTBALL TEAMS <i class="fas fa-chevron-right"></i>
+                <a href="/teams.html#east" class="quick-link">
+                    EAST REGION TEAMS <i class="fas fa-chevron-right"></i>
                 </a>
-                <a href="#" class="quick-link">
-                    NJCAA DI FOOTBALL <i class="fas fa-chevron-right"></i>
+                <a href="/teams.html#south" class="quick-link">
+                    SOUTH REGION TEAMS <i class="fas fa-chevron-right"></i>
                 </a>
-                <a href="#" class="quick-link active">
-                    NJCAA DIII FOOTBALL <i class="fas fa-chevron-right"></i>
+                <a href="/championships.html" class="quick-link active">
+                    SEASON ONE CHAMPIONSHIP <i class="fas fa-chevron-right"></i>
                 </a>
             </div>
             <div class="quick-links-image">
-                <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800&q=80" alt="DIII Football">
+                <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=800&q=80" alt="NJCAA Football">
                 <div class="quick-links-overlay">
-                    <h2>NJCAA</h2>
-                    <h1>DIII FOOTBALL</h1>
+                    <h2>NJCAA ROBLOX</h2>
+                    <h1>FOOTBALL</h1>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sponsor Banner -->
-    <section class="sponsor-section">
-        <a href="#">
-            <img src="https://via.placeholder.com/728x90/003366/ffffff?text=TEAM+ISSUE+-+Official+Football+of+the+NJCAA" alt="Team Issue - Official Football of the NJCAA" class="sponsor-banner">
-        </a>
-    </section>
-
     <!-- Social Section -->
     <section class="social-section">
-        <h2 class="social-hashtag">#OPPORTUNITIESSTARTHERE</h2>
+        <h2 class="social-hashtag">#NJCAAROBLOX</h2>
         <div class="social-icons">
-            <a href="https://twitter.com/NJCAA" target="_blank" rel="noopener" class="social-icon" title="X (Twitter)">
+            <a href="#" target="_blank" rel="noopener" class="social-icon" title="Discord">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener" class="social-icon" title="X (Twitter)">
                 <i class="fab fa-x-twitter"></i>
             </a>
-            <a href="https://youtube.com/NJCAA" target="_blank" rel="noopener" class="social-icon" title="YouTube">
+            <a href="#" target="_blank" rel="noopener" class="social-icon" title="YouTube">
                 <i class="fab fa-youtube"></i>
             </a>
-            <a href="https://instagram.com/NJCAA" target="_blank" rel="noopener" class="social-icon" title="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://facebook.com/NJCAA" target="_blank" rel="noopener" class="social-icon" title="Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://linkedin.com/company/NJCAA" target="_blank" rel="noopener" class="social-icon" title="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
+            <a href="https://www.roblox.com" target="_blank" rel="noopener" class="social-icon" title="Roblox">
+                <i class="fas fa-gamepad"></i>
             </a>
         </div>
     </section>
@@ -179,23 +299,21 @@
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-left">
-                <h3>NJCAA</h3>
+                <h3>NJCAA ROBLOX</h3>
+                <p class="footer-tagline">The Premier Roblox Football Experience</p>
                 <div class="footer-social">
-                    <a href="https://facebook.com/NJCAA" target="_blank" rel="noopener" title="Facebook">
-                        <i class="fab fa-facebook-f"></i>
+                    <a href="#" target="_blank" rel="noopener" title="Discord">
+                        <i class="fab fa-discord"></i>
                     </a>
-                    <a href="https://twitter.com/NJCAA" target="_blank" rel="noopener" title="X (Twitter)">
+                    <a href="#" target="_blank" rel="noopener" title="X (Twitter)">
                         <i class="fab fa-x-twitter"></i>
                     </a>
-                    <a href="https://instagram.com/NJCAA" target="_blank" rel="noopener" title="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://youtube.com/NJCAA" target="_blank" rel="noopener" title="YouTube">
+                    <a href="#" target="_blank" rel="noopener" title="YouTube">
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
-                <p>©2026 NJCAA. All rights reserved.</p>
-                <p><a href="#">Terms of Use</a> • <a href="#">Privacy Policy</a></p>
+                <p class="footer-founders">Founded by WRBEAST990, SaintJayden, Marcel & Grayson</p>
+                <p>©2026 NJCAA Roblox Football League. All rights reserved.</p>
             </div>
             <div class="footer-logos">
                 <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="footer-logo">

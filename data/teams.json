@@ -1,44 +1,56 @@
 [
     {
         "id": "1",
-        "name": "Iowa Western Community College",
-        "abbreviation": "IWCC",
-        "conference": "ICCAC",
-        "location": "Council Bluffs, IA"
+        "name": "East Mississippi",
+        "abbreviation": "EMCC",
+        "conference": "East Region",
+        "location": "Mayhew Campus",
+        "nickname": "Lions",
+        "athleticDirector": "WRBEAST990"
     },
     {
         "id": "2",
-        "name": "Hutchinson Community College",
-        "abbreviation": "HCC",
-        "conference": "KJCCC",
-        "location": "Hutchinson, KS"
+        "name": "Ellsworth Panthers",
+        "abbreviation": "ECC",
+        "conference": "East Region",
+        "location": "Ellsworth, Wisconsin",
+        "nickname": "Panthers",
+        "athleticDirector": "SaintJayden"
     },
     {
         "id": "3",
-        "name": "Tyler Junior College",
-        "abbreviation": "TJC",
-        "conference": "SWJCFC",
-        "location": "Tyler, TX"
+        "name": "Indy Pirates",
+        "abbreviation": "INDY",
+        "conference": "East Region",
+        "location": "Thompson's Station, Tennessee",
+        "nickname": "Pirates",
+        "athleticDirector": "Marcel"
     },
     {
         "id": "4",
-        "name": "Garden City Community College",
-        "abbreviation": "GCCC",
-        "conference": "KJCCC",
-        "location": "Garden City, KS"
+        "name": "Laney Eagles",
+        "abbreviation": "LCC",
+        "conference": "South Region",
+        "location": "Wilmington, North Carolina",
+        "nickname": "Eagles",
+        "athleticDirector": "Grayson"
     },
     {
         "id": "5",
-        "name": "College of DuPage",
-        "abbreviation": "COD",
-        "conference": "DIII",
-        "location": "Glen Ellyn, IL"
+        "name": "Diablo Valley Vikings",
+        "abbreviation": "DVC",
+        "conference": "South Region",
+        "location": "Pleasant Hill, California",
+        "nickname": "Vikings",
+        "athleticDirector": "Available"
     },
     {
         "id": "6",
-        "name": "Northwest Mississippi Community College",
-        "abbreviation": "NWCC",
-        "conference": "MACCC",
-        "location": "Senatobia, MS"
+        "name": "Southwest Bears",
+        "abbreviation": "SWC",
+        "conference": "South Region",
+        "location": "Fort Worth, TX",
+        "nickname": "Bears",
+        "athleticDirector": "Available"
     }
 ]

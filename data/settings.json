@@ -1,5 +1,9 @@
 {
-    "siteName": "NJCAA Football",
+    "siteName": "NJCAA Roblox Football League",
     "heroTitle": "NJCAA FOOTBALL",
-    "season": "2025-2026"
+    "season": "Season ONE",
+    "tagline": "The Premier Roblox Football Experience",
+    "founders": ["WRBEAST990", "SaintJayden", "Marcel", "Grayson"],
+    "conferences": ["East Region", "South Region"],
+    "totalPrograms": 6
 }

@@ -1,26 +1,34 @@
 [
     {
         "id": "1",
-        "title": "NJCAA Alumni in the 2026 College Football Playoff",
-        "content": "Several former NJCAA players are making their mark in the College Football Playoff this year. These athletes showcase the incredible talent that comes through junior college programs across the nation.",
+        "title": "NJCAA Roblox Football League Launches Season ONE",
+        "content": "The NJCAA Roblox Football League officially kicks off Season ONE with 6 registered programs across two regions. Founded by WRBEAST990, SaintJayden, Marcel, and Grayson, this league brings the authentic junior college football experience to Roblox. The East Region features East Mississippi, Ellsworth Panthers, and Indy Pirates, while the South Region hosts Laney Eagles, Diablo Valley Vikings, and Southwest Bears.",
         "image": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=800",
-        "date": "2026-01-08T00:00:00.000Z",
+        "date": "2026-01-09T00:00:00.000Z",
         "author": "NJCAA Staff"
     },
     {
         "id": "2",
-        "title": "Iowa Western's Malachi Marshall named Offensive Player of the Year",
-        "content": "Malachi Marshall has been named the NJCAA DI Football Offensive Player of the Year after an outstanding season with Iowa Western Community College.",
+        "title": "East Mississippi Lions Join the League",
+        "content": "The East Mississippi Lions have officially joined the NJCAA Roblox Football League as part of the East Region. Located at the Mayhew Campus, the Lions are ready to compete against the best junior college programs on Roblox. Head Coach positions are now open for qualified candidates.",
         "image": "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800",
-        "date": "2025-12-20T00:00:00.000Z",
+        "date": "2026-01-08T00:00:00.000Z",
         "author": "NJCAA Staff"
     },
     {
         "id": "3",
-        "title": "NJCAA announces DI Football All-America Teams",
-        "content": "The NJCAA has announced the Division I Football All-America Teams for the 2025 season, recognizing the top performers across all positions.",
+        "title": "South Region Welcomes Three New Programs",
+        "content": "The South Region is now complete with three exciting programs: Laney Eagles from Wilmington, NC, Diablo Valley Vikings from Pleasant Hill, CA, and Southwest Bears from Fort Worth, TX. Each team is actively recruiting players and coaching staff for the upcoming season.",
         "image": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800",
-        "date": "2025-12-20T00:00:00.000Z",
+        "date": "2026-01-07T00:00:00.000Z",
+        "author": "NJCAA Staff"
+    },
+    {
+        "id": "4",
+        "title": "Head Coach Positions Now Available",
+        "content": "Multiple programs are seeking qualified Head Coaches for Season ONE. If you have experience in Roblox football and want to lead a program to championship glory, now is your chance. Contact the Athletic Directors through our Discord server to apply.",
+        "image": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800",
+        "date": "2026-01-06T00:00:00.000Z",
         "author": "NJCAA Staff"
     }
 ]

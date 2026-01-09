@@ -1,0 +1,301 @@
+/* ============================================
+   NJCAA ROBLOX LEAGUE - ADDITIONAL STYLES
+   ============================================ */
+
+/* League Stats Banner */
+.league-stats-banner {
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, var(--njcaa-dark-blue) 100%);
+    padding: 30px 24px;
+}
+
+.stats-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-item-banner {
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-item-banner i {
+    font-size: 28px;
+    opacity: 0.9;
+}
+
+.stat-item-banner .stat-value {
+    font-family: 'Oswald', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.stat-item-banner .stat-label {
+    font-size: 13px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Teams Section on Homepage */
+.teams-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px;
+}
+
+.region-container {
+    margin-bottom: 50px;
+}
+
+.region-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border-radius: 10px 10px 0 0;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+}
+
+.region-header.east {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+}
+
+.region-header.south {
+    background: linear-gradient(135deg, #744210 0%, #c05621 100%);
+}
+
+.region-header i {
+    font-size: 24px;
+}
+
+.region-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.teams-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 24px;
+    background: var(--njcaa-gray);
+    border-radius: 0 0 10px 10px;
+}
+
+.team-card-home {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.team-card-home:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.team-card-logo {
+    flex-shrink: 0;
+}
+
+.team-initials {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--njcaa-blue) 0%, var(--njcaa-accent) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.team-card-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--njcaa-dark-gray);
+    margin-bottom: 6px;
+}
+
+.team-card-info p {
+    font-size: 13px;
+    color: var(--njcaa-text-light);
+    margin-bottom: 8px;
+}
+
+.team-card-info p i {
+    margin-right: 6px;
+    color: var(--njcaa-accent);
+}
+
+.team-badge {
+    display: inline-block;
+    background: var(--njcaa-gray);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--njcaa-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Founders Section */
+.founders-section {
+    background: linear-gradient(135deg, #0a1628 0%, #1a365d 50%, #0a1628 100%);
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.founders-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1920') center/cover;
+    opacity: 0.1;
+}
+
+.founders-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.founders-content {
+    text-align: center;
+    color: white;
+}
+
+.founders-logo {
+    height: 100px;
+    margin-bottom: 24px;
+    filter: brightness(0) invert(1);
+    animation: float 3s ease-in-out infinite;
+}
+
+.founders-content h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.founders-content > p {
+    font-size: 16px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+}
+
+.founders-list {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.founder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.founder-avatar {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--njcaa-accent) 0%, var(--njcaa-blue) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    transition: var(--transition);
+}
+
+.founder:hover .founder-avatar {
+    transform: scale(1.1);
+    border-color: white;
+}
+
+.founder span {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+/* Footer Updates */
+.footer-tagline {
+    font-size: 14px;
+    color: var(--njcaa-text-light);
+    margin-bottom: 16px;
+}
+
+.footer-founders {
+    font-size: 12px;
+    color: var(--njcaa-text-light);
+    margin-bottom: 8px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .teams-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .teams-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-container {
+        justify-content: center;
+    }
+    
+    .stat-item-banner {
+        min-width: 120px;
+    }
+    
+    .founders-list {
+        gap: 24px;
+    }
+    
+    .founder-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+    
+    .founders-content h2 {
+        font-size: 28px;
+    }
+}

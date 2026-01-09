@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News | NJCAA Football</title>
+    <title>News | NJCAA Roblox Football</title>
     <link rel="icon" type="image/png" href="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/pages.css">
+    <link rel="stylesheet" href="/css/roblox.css">
 </head>
 <body>
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-content">
-            <span class="top-bar-logo">NJCAA</span>
+            <span class="top-bar-logo">NJCAA ROBLOX</span>
             <nav class="top-bar-nav">
-                <a href="/">NJCAA</a>
-                <a href="#">Stats</a>
-                <a href="#">Foundation</a>
+                <a href="/">Home</a>
+                <a href="/teams.html">Programs</a>
+                <a href="/news.html">News</a>
                 <a href="/championships.html">Championships</a>
-                <a href="#">Network</a>
-                <a href="#">Compliance</a>
+                <a href="/about.html">About</a>
             </nav>
         </div>
     </div>
@@ -34,25 +34,21 @@
                 <a href="/"><img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="main-logo"></a>
             </div>
             <nav class="main-nav">
-                <a href="/sports.html" class="nav-link">SPORTS <i class="fas fa-chevron-down"></i></a>
+                <a href="/teams.html" class="nav-link">PROGRAMS</a>
                 <a href="/championships.html" class="nav-link">CHAMPIONSHIPS</a>
-                <a href="/membership.html" class="nav-link">MEMBERSHIP <i class="fas fa-chevron-down"></i></a>
-                <a href="/about.html" class="nav-link">ABOUT <i class="fas fa-chevron-down"></i></a>
-                <a href="#" class="nav-link">LINKS <i class="fas fa-chevron-down"></i></a>
-                <div class="nav-icons">
-                    <a href="#"><i class="fas fa-th"></i></a>
-                    <a href="#"><i class="fas fa-search"></i></a>
-                </div>
+                <a href="/membership.html" class="nav-link">JOIN LEAGUE</a>
+                <a href="/about.html" class="nav-link">ABOUT</a>
+                <a href="/news.html" class="nav-link">NEWS</a>
             </nav>
         </div>
         <div class="sub-header">
             <div class="sub-header-content">
-                <span class="sport-title">FOOTBALL</span>
+                <span class="sport-title">SEASON ONE</span>
                 <nav class="sub-nav">
                     <a href="/news.html" class="active">NEWS</a>
                     <a href="/teams.html">TEAMS</a>
-                    <a href="/division1.html">DIVISION I</a>
-                    <a href="/division3.html">DIVISION III</a>
+                    <a href="/teams.html#east">EAST REGION</a>
+                    <a href="/teams.html#south">SOUTH REGION</a>
                     <a href="/championships.html">CHAMPIONSHIPS</a>
                 </nav>
             </div>
@@ -67,8 +63,8 @@
             <div class="page-hero-logo">
                 <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA">
             </div>
-            <h1>FOOTBALL NEWS</h1>
-            <p>Stay up to date with the latest NJCAA Football news and updates</p>
+            <h1>LEAGUE NEWS</h1>
+            <p>Stay up to date with the latest NJCAA Roblox Football news</p>
         </div>
     </section>
 
@@ -76,10 +72,6 @@
     <div class="breadcrumb">
         <div class="breadcrumb-content">
             <a href="/"><i class="fas fa-home"></i> Home</a>
-            <span>/</span>
-            <a href="#">Sports</a>
-            <span>/</span>
-            <a href="#">Football</a>
             <span>/</span>
             <span class="current">News</span>
         </div>
@@ -96,9 +88,9 @@
             <!-- News Filter -->
             <div class="news-filter">
                 <button class="filter-btn active" data-filter="all">All News</button>
-                <button class="filter-btn" data-filter="division1">Division I</button>
-                <button class="filter-btn" data-filter="division3">Division III</button>
-                <button class="filter-btn" data-filter="championships">Championships</button>
+                <button class="filter-btn" data-filter="east">East Region</button>
+                <button class="filter-btn" data-filter="south">South Region</button>
+                <button class="filter-btn" data-filter="league">League Updates</button>
             </div>
 
             <!-- News Grid -->
@@ -107,15 +99,6 @@
                     <div class="loading"></div>
                 </div>
             </section>
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
-            </div>
         </div>
 
         <!-- Sidebar -->
@@ -123,33 +106,32 @@
             <div class="sidebar-widget">
                 <h3><i class="fas fa-trophy"></i> Quick Links</h3>
                 <ul class="sidebar-links">
-                    <li><a href="/teams.html"><i class="fas fa-users"></i> View All Teams</a></li>
+                    <li><a href="/teams.html"><i class="fas fa-users"></i> View All Programs</a></li>
                     <li><a href="/championships.html"><i class="fas fa-medal"></i> Championships</a></li>
-                    <li><a href="/division1.html"><i class="fas fa-football"></i> Division I</a></li>
-                    <li><a href="/division3.html"><i class="fas fa-football"></i> Division III</a></li>
+                    <li><a href="/teams.html#east"><i class="fas fa-compass"></i> East Region</a></li>
+                    <li><a href="/teams.html#south"><i class="fas fa-sun"></i> South Region</a></li>
                 </ul>
             </div>
 
             <div class="sidebar-widget">
-                <h3><i class="fas fa-calendar"></i> Recent Scores</h3>
+                <h3><i class="fas fa-calendar"></i> Upcoming Games</h3>
                 <div class="sidebar-scores" id="sidebarScores">
                     <div class="loading"></div>
                 </div>
             </div>
 
             <div class="sidebar-widget social-widget">
-                <h3><i class="fas fa-share-alt"></i> Follow Us</h3>
+                <h3><i class="fas fa-share-alt"></i> Connect</h3>
                 <div class="sidebar-social">
+                    <a href="#" class="social-btn" style="background: #5865F2;"><i class="fab fa-discord"></i></a>
                     <a href="#" class="social-btn twitter"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
 
             <div class="sidebar-widget sponsor-widget">
                 <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="sidebar-logo">
-                <p>National Junior College Athletic Association</p>
+                <p>NJCAA Roblox Football League</p>
             </div>
         </aside>
     </main>
@@ -158,15 +140,15 @@
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-left">
-                <h3>NJCAA</h3>
+                <h3>NJCAA ROBLOX</h3>
+                <p class="footer-tagline">The Premier Roblox Football Experience</p>
                 <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
                     <a href="#"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
-                <p>©2026 NJCAA. All rights reserved.</p>
-                <p><a href="#">Terms of Use</a> • <a href="#">Privacy Policy</a></p>
+                <p class="footer-founders">Founded by WRBEAST990, SaintJayden, Marcel & Grayson</p>
+                <p>©2026 NJCAA Roblox Football League.</p>
             </div>
             <div class="footer-logos">
                 <img src="https://www.njcaa.org/images/logos/NJCAA_Shield_RGB.png" alt="NJCAA" class="footer-logo">

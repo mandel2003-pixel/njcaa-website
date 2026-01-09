@@ -45,7 +45,308 @@
     letter-spacing: 1px;
 }
 
-/* Teams Section on Homepage */
+/* ============================================
+   TEAMS PAGE STYLES
+   ============================================ */
+
+/* Conference Sections */
+.conference-section {
+    margin-bottom: 50px;
+}
+
+.conference-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    border-radius: 12px 12px 0 0;
+    color: white;
+}
+
+.conference-header.d3 {
+    background: linear-gradient(135deg, #744210 0%, #c05621 100%);
+}
+
+.conference-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.conference-header h2 i {
+    font-size: 22px;
+    opacity: 0.9;
+}
+
+.team-count {
+    background: rgba(255,255,255,0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Teams Grid */
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 28px;
+    background: #f8fafc;
+    border-radius: 0 0 12px 12px;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+}
+
+/* Team Card */
+.team-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.team-logo-container {
+    background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+    padding: 40px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-logo-placeholder {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #003366;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.team-logo-placeholder.large {
+    width: 90px;
+    height: 90px;
+    font-size: 32px;
+}
+
+.team-info-card {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.team-info-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 8px;
+}
+
+.team-location {
+    font-size: 13px;
+    color: #718096;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.team-location i {
+    color: #0066cc;
+}
+
+.team-nickname {
+    font-size: 14px;
+    color: #4a5568;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.team-stats {
+    font-size: 14px;
+    color: #2d3748;
+    padding: 10px 0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 12px;
+}
+
+.team-staff-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    color: #4a5568;
+    margin-bottom: 16px;
+}
+
+.team-staff-mini span {
+    display: flex;
+    gap: 6px;
+}
+
+.team-staff-mini em {
+    color: #f59e0b;
+    font-style: normal;
+}
+
+.team-link {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background: linear-gradient(135deg, #003366 0%, #0055a4 100%);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.team-card:hover .team-link {
+    background: linear-gradient(135deg, #002244 0%, #003366 100%);
+}
+
+/* Division CTA */
+.division-cta {
+    background: linear-gradient(135deg, #003366 0%, #001a33 100%);
+    border-radius: 16px;
+    padding: 60px 40px;
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.division-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1920') center/cover;
+    opacity: 0.1;
+}
+
+.cta-logo {
+    height: 80px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.division-cta h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.division-cta p {
+    font-size: 16px;
+    opacity: 0.9;
+    max-width: 500px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-btn.primary {
+    background: #5865F2;
+    color: white;
+}
+
+.cta-btn.primary:hover {
+    background: #4752c4;
+    transform: translateY(-2px);
+}
+
+.cta-btn:not(.primary) {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.cta-btn:not(.primary):hover {
+    background: rgba(255,255,255,0.2);
+    border-color: white;
+}
+
+/* Loading State */
+.teams-grid .loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px;
+    color: #718096;
+}
+
+.no-content {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #718096;
+    font-size: 15px;
+}
+
+/* ============================================
+   HOMEPAGE TEAMS SECTION
+   ============================================ */
+
 .teams-section {
     max-width: 1200px;
     margin: 0 auto;
@@ -89,25 +390,27 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 24px;
-    background: var(--njcaa-gray);
+    background: #f8fafc;
     border-radius: 0 0 10px 10px;
 }
 
 .team-card-home {
     background: white;
-    border-radius: var(--border-radius);
+    border-radius: 12px;
     padding: 24px;
     display: flex;
     align-items: center;
     gap: 20px;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    transition: all 0.3s;
     cursor: pointer;
+    text-decoration: none;
+    color: inherit;
 }
 
 .team-card-home:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 }
 
 .team-card-logo {
@@ -117,7 +420,7 @@
 .team-initials {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--njcaa-blue) 0%, var(--njcaa-accent) 100%);
+    background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -131,34 +434,37 @@
 .team-card-info h4 {
     font-size: 16px;
     font-weight: 600;
-    color: var(--njcaa-dark-gray);
+    color: #1a202c;
     margin-bottom: 6px;
 }
 
 .team-card-info p {
     font-size: 13px;
-    color: var(--njcaa-text-light);
+    color: #718096;
     margin-bottom: 8px;
 }
 
 .team-card-info p i {
     margin-right: 6px;
-    color: var(--njcaa-accent);
+    color: #0066cc;
 }
 
 .team-badge {
     display: inline-block;
-    background: var(--njcaa-gray);
+    background: #f1f5f9;
     padding: 4px 12px;
     border-radius: 12px;
     font-size: 11px;
     font-weight: 600;
-    color: var(--njcaa-blue);
+    color: #003366;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-/* Founders Section */
+/* ============================================
+   FOUNDERS SECTION
+   ============================================ */
+
 .founders-section {
     background: linear-gradient(135deg, #0a1628 0%, #1a365d 50%, #0a1628 100%);
     padding: 80px 24px;
@@ -196,6 +502,11 @@
     animation: float 3s ease-in-out infinite;
 }
 
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
 .founders-content h2 {
     font-family: 'Oswald', sans-serif;
     font-size: 36px;
@@ -229,7 +540,7 @@
 .founder-avatar {
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, var(--njcaa-accent) 0%, var(--njcaa-blue) 100%);
+    background: linear-gradient(135deg, #00a3e0 0%, #003366 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -238,7 +549,7 @@
     font-size: 28px;
     font-weight: 700;
     border: 3px solid rgba(255, 255, 255, 0.3);
-    transition: var(--transition);
+    transition: all 0.3s;
 }
 
 .founder:hover .founder-avatar {
@@ -255,26 +566,68 @@
 /* Footer Updates */
 .footer-tagline {
     font-size: 14px;
-    color: var(--njcaa-text-light);
+    color: #718096;
     margin-bottom: 16px;
 }
 
 .footer-founders {
     font-size: 12px;
-    color: var(--njcaa-text-light);
+    color: #718096;
     margin-bottom: 8px;
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
 @media (max-width: 1024px) {
+    .teams-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
     .teams-row {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
+    .teams-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+    }
+    
     .teams-row {
         grid-template-columns: 1fr;
+    }
+    
+    .conference-header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    
+    .conference-header h2 {
+        font-size: 20px;
+    }
+    
+    .division-cta {
+        padding: 40px 24px;
+    }
+    
+    .division-cta h3 {
+        font-size: 24px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
     }
     
     .stats-container {
@@ -297,5 +650,17 @@
     
     .founders-content h2 {
         font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-logo-placeholder.large {
+        width: 70px;
+        height: 70px;
+        font-size: 26px;
+    }
+    
+    .team-info-card h3 {
+        font-size: 18px;
     }
 }

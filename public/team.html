@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team | NJCAA Roblox Football</title>
+    <link rel="icon" type="image/png" href="https://www.njcaa.org/images/setup/site-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pages.css">
+    <style>
+        .team-hero {
+            background: linear-gradient(135deg, #003366 0%, #001a33 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        .team-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .team-logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #003366;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .team-logo img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+        .team-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .team-nickname {
+            font-size: 24px;
+            opacity: 0.8;
+            margin-bottom: 16px;
+        }
+        .team-region {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .team-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .team-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .team-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #003366;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        .info-label {
+            color: #666;
+            font-size: 14px;
+        }
+        .info-value {
+            font-weight: 600;
+            color: #333;
+        }
+        .info-value.available {
+            color: #10b981;
+        }
+        .info-value.needed {
+            color: #f59e0b;
+        }
+        .staff-member {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .staff-member:last-child {
+            border-bottom: none;
+        }
+        .staff-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #003366, #0066cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        .staff-info h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        .staff-info p {
+            font-size: 13px;
+            color: #666;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #003366;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .not-found {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .not-found h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+        .not-found p {
+            color: #666;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .team-name {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <span class="top-bar-logo">NJCAA ROBLOX</span>
+            <nav class="top-bar-nav">
+                <a href="/">Home</a>
+                <a href="/teams.html">Programs</a>
+                <a href="/news.html">News</a>
+                <a href="/championships.html">Championships</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <a href="/"><img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA" class="main-logo"></a>
+            </div>
+            <nav class="main-nav">
+                <a href="/teams.html" class="nav-link active">PROGRAMS</a>
+                <a href="/championships.html" class="nav-link">CHAMPIONSHIPS</a>
+                <a href="/membership.html" class="nav-link">JOIN LEAGUE</a>
+                <a href="/about.html" class="nav-link">ABOUT</a>
+                <a href="/news.html" class="nav-link">NEWS</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Team Content -->
+    <div id="teamContent">
+        <div class="loading" style="padding: 100px; text-align: center;">
+            <p>Loading team...</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA" class="footer-logo">
+                <p>The Premier Roblox Football Experience</p>
+            </div>
+            <div class="footer-links">
+                <a href="/teams.html">Programs</a>
+                <a href="/championships.html">Championships</a>
+                <a href="/membership.html">Join League</a>
+                <a href="/about.html">About</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NJCAA Roblox Football League</p>
+                <p>Founded by WRBEAST990, SaintJayden, Marcel & Grayson</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get team ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const teamId = urlParams.get('id');
+
+        async function loadTeam() {
+            if (!teamId) {
+                showNotFound();
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/teams');
+                const teams = await res.json();
+                const team = teams.find(t => t.id === teamId);
+
+                if (!team) {
+                    showNotFound();
+                    return;
+                }
+
+                renderTeam(team);
+                document.title = `${team.name} | NJCAA Roblox Football`;
+            } catch (error) {
+                console.error('Error loading team:', error);
+                showNotFound();
+            }
+        }
+
+        function renderTeam(team) {
+            const initials = team.name.split(' ').map(w => w[0]).join('').substring(0, 2);
+            
+            document.getElementById('teamContent').innerHTML = `
+                <div class="team-hero">
+                    <div class="team-hero-content">
+                        <div class="team-logo">
+                            ${team.logo ? `<img src="${team.logo}" alt="${team.name}">` : initials}
+                        </div>
+                        <h1 class="team-name">${team.name}</h1>
+                        ${team.nickname ? `<p class="team-nickname">${team.nickname}</p>` : ''}
+                        <span class="team-region"><i class="fas fa-map-marker-alt"></i> ${team.conference || 'NJCAA'}</span>
+                    </div>
+                </div>
+
+                <div class="team-content">
+                    <a href="/teams.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Programs</a>
+                    
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <h3><i class="fas fa-info-circle"></i> Team Information</h3>
+                            <div class="info-row">
+                                <span class="info-label">Full Name</span>
+                                <span class="info-value">${team.name}</span>
+                            </div>
+                            ${team.nickname ? `
+                            <div class="info-row">
+                                <span class="info-label">Nickname</span>
+                                <span class="info-value">${team.nickname}</span>
+                            </div>` : ''}
+                            ${team.abbreviation ? `
+                            <div class="info-row">
+                                <span class="info-label">Abbreviation</span>
+                                <span class="info-value">${team.abbreviation}</span>
+                            </div>` : ''}
+                            <div class="info-row">
+                                <span class="info-label">Region</span>
+                                <span class="info-value">${team.conference || 'Unassigned'}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Location</span>
+                                <span class="info-value">${team.location || 'TBD'}</span>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <h3><i class="fas fa-users"></i> Staff</h3>
+                            <div class="staff-member">
+                                <div class="staff-avatar">
+                                    ${team.athleticDirector ? team.athleticDirector.charAt(0).toUpperCase() : '?'}
+                                </div>
+                                <div class="staff-info">
+                                    <h4>${team.athleticDirector || '<span class="needed">Position Available</span>'}</h4>
+                                    <p>Athletic Director</p>
+                                </div>
+                            </div>
+                            <div class="staff-member">
+                                <div class="staff-avatar">
+                                    ${team.headCoach ? team.headCoach.charAt(0).toUpperCase() : '?'}
+                                </div>
+                                <div class="staff-info">
+                                    <h4>${team.headCoach || '<span class="needed">Position Available</span>'}</h4>
+                                    <p>Head Coach</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showNotFound() {
+            document.getElementById('teamContent').innerHTML = `
+                <div class="not-found">
+                    <h2>Team Not Found</h2>
+                    <p>The team you're looking for doesn't exist or has been removed.</p>
+                    <a href="/teams.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Programs</a>
+                </div>
+            `;
+        }
+
+        loadTeam();
+    </script>
+</body>
+</html>

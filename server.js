@@ -728,19 +728,20 @@ app.get('/api/health', (req, res) => {
 
 // Team role mappings (Discord role name -> Team name)
 const TEAM_ROLE_MAPPINGS = {
-    'Ole Miss Rebels': 'Ole Miss Rebels',
-    'Vanderbilt Commodores': 'Vanderbilt Commodores',
-    'Texas A&M': 'Texas A&M',
-    'SMU Mustangs': 'SMU Mustangs',
-    'Boston College Eagles': 'Boston College Eagles',
-    'Wake Forest Demon Deacons': 'Wake Forest Demon Deacons',
-    // Add any role name variations here
-    'Ole Miss': 'Ole Miss Rebels',
+    // Exact role names with abbreviations
+    '[WF] Wake Forest Demon Deacons': 'Wake Forest Demon Deacons',
+    '[VC] Vanderbilt Commodores': 'Vanderbilt Commodores',
+    '[TAMU] Texas A&M': 'Texas A&M',
+    '[OLE] Ole Miss Rebels': 'Ole Miss Rebels',
+    '[SMU] Southern Methodist University': 'SMU Mustangs',
+    '[BC] Boston College Eagles': 'Boston College Eagles',
+    // Partial matches (fallbacks)
+    'Wake Forest': 'Wake Forest Demon Deacons',
     'Vanderbilt': 'Vanderbilt Commodores',
-    'TAMU': 'Texas A&M',
+    'Texas A&M': 'Texas A&M',
+    'Ole Miss': 'Ole Miss Rebels',
     'SMU': 'SMU Mustangs',
     'Boston College': 'Boston College Eagles',
-    'Wake Forest': 'Wake Forest Demon Deacons',
 };
 
 // Get team from Discord user ID (for Roblox integration)

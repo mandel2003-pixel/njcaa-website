@@ -193,7 +193,7 @@ function renderTeamsTable() {
     
     tbody.innerHTML = teamsData.map(team => {
         const initials = getInitials(team.name);
-        const regionClass = team.conference?.includes('East') ? 'badge-east' : 'badge-south';
+        const conferenceClass = team.conference === 'SEC' ? 'badge-east' : 'badge-south';
         
         return `
             <tr>
@@ -208,7 +208,7 @@ function renderTeamsTable() {
                         </div>
                     </div>
                 </td>
-                <td><span class="badge ${regionClass}">${team.conference || 'Unassigned'}</span></td>
+                <td><span class="badge ${conferenceClass}">${team.conference || 'Unassigned'}</span></td>
                 <td>${team.location || '-'}</td>
                 <td>${team.athleticDirector || '<em style="color: var(--gray-400)">Available</em>'}</td>
                 <td>${team.headCoach || '<em style="color: var(--gray-400)">Available</em>'}</td>

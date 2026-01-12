@@ -8,7 +8,9 @@
         "date": "2026-01-15",
         "time": "7:00 PM EST",
         "venue": "Mayhew Campus Stadium",
-        "status": "scheduled"
+        "status": "scheduled",
+        "week": 1,
+        "streamUrl": null
     },
     {
         "id": "2",
@@ -19,7 +21,9 @@
         "date": "2026-01-15",
         "time": "8:00 PM EST",
         "venue": "Wilmington Field",
-        "status": "scheduled"
+        "status": "scheduled",
+        "week": 1,
+        "streamUrl": null
     },
     {
         "id": "3",
@@ -30,7 +34,9 @@
         "date": "2026-01-16",
         "time": "9:00 PM EST",
         "venue": "Viking Stadium",
-        "status": "scheduled"
+        "status": "scheduled",
+        "week": 1,
+        "streamUrl": null
     },
     {
         "id": "4",
@@ -41,7 +47,9 @@
         "date": "2026-01-22",
         "time": "7:00 PM EST",
         "venue": "Pirate Arena",
-        "status": "scheduled"
+        "status": "scheduled",
+        "week": 2,
+        "streamUrl": null
     },
     {
         "id": "5",
@@ -52,7 +60,9 @@
         "date": "2026-01-22",
         "time": "8:00 PM EST",
         "venue": "Fort Worth Stadium",
-        "status": "scheduled"
+        "status": "scheduled",
+        "week": 2,
+        "streamUrl": null
     },
     {
         "id": "6",
@@ -63,6 +73,8 @@
         "date": "2026-01-23",
         "time": "7:00 PM EST",
         "venue": "Panther Field",
-        "status": "scheduled"
+        "status": "scheduled",
+        "week": 2,
+        "streamUrl": null
     }
 ]

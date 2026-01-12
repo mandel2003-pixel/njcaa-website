@@ -212,6 +212,20 @@ async function checkAdmin(accessToken) {
 }
 
 // ============================================
+// BOT API KEY MIDDLEWARE
+// ============================================
+const BOT_API_KEY = process.env.BOT_API_KEY || 'njcaa-bot-secret-key';
+
+function requireBotAuth(req, res, next) {
+    const apiKey = req.headers['x-bot-api-key'];
+    if (apiKey === BOT_API_KEY) {
+        next();
+    } else {
+        res.status(403).json({ error: 'Invalid bot API key' });
+    }
+}
+
+// ============================================
 // AUTH ROUTES
 // ============================================
 
@@ -317,6 +331,13 @@ app.get('/api/games', (req, res) => {
     res.json(games.sort((a, b) => new Date(b.date) - new Date(a.date)));
 });
 
+// Get live games only
+app.get('/api/games/live', (req, res) => {
+    const games = readData('games');
+    const liveGames = games.filter(g => g.status === 'live');
+    res.json(liveGames);
+});
+
 app.get('/api/teams', (req, res) => {
     res.json(readData('teams'));
 });
@@ -337,6 +358,95 @@ app.get('/api/slides', (req, res) => {
 
 app.get('/api/settings', (req, res) => {
     res.json(readData('settings'));
+});
+
+// ============================================
+// BOT API ROUTES (for Discord bot integration)
+// ============================================
+
+// Create game from bot
+app.post('/api/bot/games', requireBotAuth, (req, res) => {
+    try {
+        const games = readData('games');
+        const newGame = {
+            id: uuidv4(),
+            homeTeam: req.body.homeTeam,
+            awayTeam: req.body.awayTeam,
+            homeScore: req.body.homeScore ?? null,
+            awayScore: req.body.awayScore ?? null,
+            date: req.body.date,
+            time: req.body.time || '',
+            venue: req.body.venue || '',
+            status: req.body.status || 'scheduled',
+            week: req.body.week || 1,
+            streamUrl: req.body.streamUrl || null,
+            createdAt: new Date().toISOString()
+        };
+        games.push(newGame);
+        writeData('games', games);
+        console.log(`🏈 Bot created game: ${newGame.awayTeam} @ ${newGame.homeTeam}`);
+        res.json(newGame);
+    } catch (error) {
+        console.error('Error creating game from bot:', error);
+        res.status(500).json({ error: 'Failed to create game' });
+    }
+});
+
+// Update game from bot
+app.put('/api/bot/games/:id', requireBotAuth, (req, res) => {
+    try {
+        const games = readData('games');
+        const index = games.findIndex(g => g.id === req.params.id);
+        if (index === -1) return res.status(404).json({ error: 'Game not found' });
+        
+        const oldStatus = games[index].status;
+        
+        games[index] = {
+            ...games[index],
+            homeTeam: req.body.homeTeam ?? games[index].homeTeam,
+            awayTeam: req.body.awayTeam ?? games[index].awayTeam,
+            homeScore: req.body.homeScore ?? games[index].homeScore,
+            awayScore: req.body.awayScore ?? games[index].awayScore,
+            date: req.body.date ?? games[index].date,
+            time: req.body.time ?? games[index].time,
+            venue: req.body.venue ?? games[index].venue,
+            status: req.body.status ?? games[index].status,
+            week: req.body.week ?? games[index].week,
+            streamUrl: req.body.streamUrl !== undefined ? req.body.streamUrl : games[index].streamUrl,
+            updatedAt: new Date().toISOString()
+        };
+        
+        writeData('games', games);
+        
+        const newStatus = games[index].status;
+        if (oldStatus !== newStatus) {
+            console.log(`🏈 Bot updated game status: ${games[index].awayTeam} @ ${games[index].homeTeam} -> ${newStatus}`);
+        }
+        
+        res.json(games[index]);
+    } catch (error) {
+        console.error('Error updating game from bot:', error);
+        res.status(500).json({ error: 'Failed to update game' });
+    }
+});
+
+// Delete game from bot
+app.delete('/api/bot/games/:id', requireBotAuth, (req, res) => {
+    try {
+        let games = readData('games');
+        const game = games.find(g => g.id === req.params.id);
+        games = games.filter(g => g.id !== req.params.id);
+        writeData('games', games);
+        
+        if (game) {
+            console.log(`🏈 Bot deleted game: ${game.awayTeam} @ ${game.homeTeam}`);
+        }
+        
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Error deleting game from bot:', error);
+        res.status(500).json({ error: 'Failed to delete game' });
+    }
 });
 
 // ============================================
@@ -425,7 +535,9 @@ app.post('/api/admin/games', requireAdmin, (req, res) => {
             date: req.body.date,
             time: req.body.time || '',
             venue: req.body.venue || '',
-            status: req.body.status || 'scheduled'
+            status: req.body.status || 'scheduled',
+            week: req.body.week || 1,
+            streamUrl: req.body.streamUrl || null
         };
         games.push(newGame);
         writeData('games', games);
@@ -451,7 +563,9 @@ app.put('/api/admin/games/:id', requireAdmin, (req, res) => {
             date: req.body.date ?? games[index].date,
             time: req.body.time ?? games[index].time,
             venue: req.body.venue ?? games[index].venue,
-            status: req.body.status ?? games[index].status
+            status: req.body.status ?? games[index].status,
+            week: req.body.week ?? games[index].week,
+            streamUrl: req.body.streamUrl !== undefined ? req.body.streamUrl : games[index].streamUrl
         };
         writeData('games', games);
         res.json(games[index]);

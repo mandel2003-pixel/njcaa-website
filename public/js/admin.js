@@ -250,16 +250,20 @@ function renderGamesTable() {
         const score = game.status === 'final' || game.status === 'live' 
             ? `${game.homeScore || 0} - ${game.awayScore || 0}`
             : '-';
+        const weekBadge = game.week ? `<small style="color: var(--gray-500)">Week ${game.week}</small><br>` : '';
+        const streamLink = game.streamUrl && game.status === 'live' 
+            ? `<br><a href="${game.streamUrl}" target="_blank" style="color: var(--danger); font-size: 12px;"><i class="fas fa-tv"></i> Stream</a>` 
+            : '';
         
         return `
-            <tr>
-                <td>${formatDate(game.date)}${game.time ? `<br><small style="color: var(--gray-500)">${game.time}</small>` : ''}</td>
+            <tr${game.status === 'live' ? ' style="background: rgba(239, 68, 68, 0.05);"' : ''}>
+                <td>${weekBadge}${formatDate(game.date)}${game.time ? `<br><small style="color: var(--gray-500)">${game.time}</small>` : ''}</td>
                 <td>
-                    <strong>${game.awayTeam}</strong> @ <strong>${game.homeTeam}</strong>
+                    <strong>${game.awayTeam}</strong> @ <strong>${game.homeTeam}</strong>${streamLink}
                 </td>
                 <td><strong>${score}</strong></td>
                 <td>${game.venue || '-'}</td>
-                <td><span class="badge ${statusClass}">${capitalizeFirst(game.status)}</span></td>
+                <td><span class="badge ${statusClass}">${game.status === 'live' ? '🔴 LIVE' : capitalizeFirst(game.status)}</span></td>
                 <td>
                     <div class="actions">
                         <button class="btn btn-sm btn-outline" onclick="editGame('${game.id}')" title="Edit">
@@ -461,7 +465,9 @@ function openGameModal(game = null) {
         document.getElementById('gameVenue').value = game.venue || '';
         document.getElementById('gameHomeScore').value = game.homeScore ?? '';
         document.getElementById('gameAwayScore').value = game.awayScore ?? '';
+        document.getElementById('gameWeek').value = game.week ?? '';
         document.getElementById('gameStatus').value = game.status || 'scheduled';
+        document.getElementById('gameStreamUrl').value = game.streamUrl || '';
     } else {
         document.getElementById('gameForm').reset();
         document.getElementById('gameId').value = '';
@@ -617,7 +623,9 @@ function setupForms() {
             venue: document.getElementById('gameVenue').value,
             homeScore: document.getElementById('gameHomeScore').value || null,
             awayScore: document.getElementById('gameAwayScore').value || null,
-            status: document.getElementById('gameStatus').value
+            week: document.getElementById('gameWeek').value || 1,
+            status: document.getElementById('gameStatus').value,
+            streamUrl: document.getElementById('gameStreamUrl').value || null
         };
         
         try {

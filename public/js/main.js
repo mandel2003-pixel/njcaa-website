@@ -8,6 +8,7 @@ let slides = [];
 let isPaused = false;
 let sliderInterval;
 let currentUser = null;
+let liveGamesInterval;
 
 // ============================================
 // INITIALIZATION
@@ -26,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (document.getElementById('scoreboardGrid')) {
         loadScoreboard();
+        // Refresh scoreboard every 30 seconds to show live updates
+        liveGamesInterval = setInterval(loadScoreboard, 30000);
     }
 });
 
@@ -253,7 +256,17 @@ async function loadScoreboard() {
     try {
         const res = await fetch('/api/games');
         const games = await res.json();
-        renderScoreboard(games.slice(0, 6));
+        
+        // Sort: live games first, then by date
+        const sortedGames = games.sort((a, b) => {
+            // Live games first
+            if (a.status === 'live' && b.status !== 'live') return -1;
+            if (b.status === 'live' && a.status !== 'live') return 1;
+            // Then by date
+            return new Date(b.date) - new Date(a.date);
+        });
+        
+        renderScoreboard(sortedGames.slice(0, 6));
     } catch (error) {
         console.error('Error loading scoreboard:', error);
     }
@@ -279,30 +292,54 @@ function renderScoreboard(games) {
         return;
     }
     
-    container.innerHTML = games.map(game => `
-        <div class="score-card">
-            <div class="score-card-header">
-                <span>🏈 Football</span>
-                <span>${formatShortDate(game.date)} ${game.status === 'final' ? 'Final' : game.time || ''}</span>
-            </div>
-            <div class="score-card-body">
-                <div class="score-team">
-                    <div class="team-info">
-                        <span class="team-name">${game.awayTeam}</span>
-                    </div>
-                    <span class="team-score ${game.status === 'final' && game.awayScore > game.homeScore ? 'winner' : ''}">${game.awayScore ?? '-'}</span>
+    container.innerHTML = games.map(game => {
+        const isLive = game.status === 'live';
+        const isFinal = game.status === 'final';
+        
+        // Determine status display
+        let statusDisplay = game.time || '';
+        let statusClass = '';
+        
+        if (isLive) {
+            statusDisplay = '<span class="live-indicator"><span class="live-dot"></span> LIVE</span>';
+            statusClass = 'live';
+        } else if (isFinal) {
+            statusDisplay = 'Final';
+            statusClass = 'final';
+        }
+        
+        // Stream link for live games
+        const streamLink = isLive && game.streamUrl ? 
+            `<a href="${game.streamUrl}" target="_blank" class="stream-link" onclick="event.stopPropagation()">
+                <i class="fas fa-tv"></i> Watch Live
+            </a>` : '';
+        
+        return `
+            <div class="score-card ${statusClass}">
+                <div class="score-card-header">
+                    <span>🏈 Football${game.week ? ` • Week ${game.week}` : ''}</span>
+                    <span>${formatShortDate(game.date)} ${statusDisplay}</span>
                 </div>
-                <div class="score-team">
-                    <div class="team-info">
-                        <span class="team-location">at</span>
-                        <span class="team-name">${game.homeTeam}</span>
+                <div class="score-card-body">
+                    <div class="score-team">
+                        <div class="team-info">
+                            <span class="team-name">${game.awayTeam}</span>
+                        </div>
+                        <span class="team-score ${isFinal && game.awayScore > game.homeScore ? 'winner' : ''}">${game.awayScore ?? '-'}</span>
                     </div>
-                    <span class="team-score ${game.status === 'final' && game.homeScore > game.awayScore ? 'winner' : ''}">${game.homeScore ?? '-'}</span>
+                    <div class="score-team">
+                        <div class="team-info">
+                            <span class="team-location">at</span>
+                            <span class="team-name">${game.homeTeam}</span>
+                        </div>
+                        <span class="team-score ${isFinal && game.homeScore > game.awayScore ? 'winner' : ''}">${game.homeScore ?? '-'}</span>
+                    </div>
+                    ${game.venue ? `<p class="score-venue">${game.venue}</p>` : ''}
+                    ${streamLink}
                 </div>
-                ${game.venue ? `<p class="score-venue">${game.venue}</p>` : ''}
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 // ============================================

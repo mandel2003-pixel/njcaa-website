@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programs | NJCAA Roblox Football</title>
+    <title>Programs | RNCAA Roblox Football</title>
     <link rel="icon" type="image/png" href="https://www.njcaa.org/images/setup/site-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-content">
-            <span class="top-bar-logo">NJCAA ROBLOX</span>
+            <span class="top-bar-logo">RNCAA ROBLOX</span>
             <nav class="top-bar-nav">
                 <a href="/">Home</a>
                 <a href="/teams.html">Programs</a>
@@ -31,7 +31,7 @@
     <header class="main-header">
         <div class="header-content">
             <div class="logo-section">
-                <a href="/"><img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA" class="main-logo"></a>
+                <a href="/"><img src="https://www.njcaa.org/images/setup/site-logo.png" alt="RNCAA" class="main-logo"></a>
             </div>
             <nav class="main-nav">
                 <a href="/teams.html" class="nav-link">PROGRAMS</a>
@@ -47,8 +47,8 @@
                 <nav class="sub-nav">
                     <a href="/news.html">NEWS</a>
                     <a href="/teams.html" class="active">TEAMS</a>
-                    <a href="/teams.html#east">EAST REGION</a>
-                    <a href="/teams.html#south">SOUTH REGION</a>
+                    <a href="/teams.html#sec">SEC</a>
+                    <a href="/teams.html#acc">ACC</a>
                     <a href="/championships.html">CHAMPIONSHIPS</a>
                 </nav>
             </div>
@@ -61,10 +61,10 @@
         <div class="page-hero-overlay"></div>
         <div class="page-hero-content">
             <div class="page-hero-logo">
-                <img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA">
+                <img src="https://www.njcaa.org/images/setup/site-logo.png" alt="RNCAA">
             </div>
             <h1>OFFICIAL PROGRAMS</h1>
-            <p>6 Registered Programs • 2 Regions • Season ONE</p>
+            <p>6 Registered Programs • 2 Conferences • Season ONE</p>
         </div>
     </section>
 
@@ -81,31 +81,31 @@
     <main class="page-content full-width">
         <div class="content-container wide">
             
-            <!-- East Region -->
-            <section class="conference-section" id="east">
+            <!-- SEC Conference -->
+            <section class="conference-section" id="sec">
                 <div class="conference-header">
-                    <h2><i class="fas fa-compass"></i> East Region</h2>
+                    <h2><i class="fas fa-shield-alt"></i> SEC</h2>
                     <span class="team-count">3 Programs</span>
                 </div>
-                <div class="teams-grid" id="eastTeams">
+                <div class="teams-grid" id="secTeams">
                     <div class="loading"></div>
                 </div>
             </section>
 
-            <!-- South Region -->
-            <section class="conference-section" id="south">
+            <!-- ACC Conference -->
+            <section class="conference-section" id="acc">
                 <div class="conference-header d3">
-                    <h2><i class="fas fa-sun"></i> South Region</h2>
+                    <h2><i class="fas fa-star"></i> ACC</h2>
                     <span class="team-count">3 Programs</span>
                 </div>
-                <div class="teams-grid" id="southTeams">
+                <div class="teams-grid" id="accTeams">
                     <div class="loading"></div>
                 </div>
             </section>
 
             <!-- Join CTA -->
             <section class="division-cta">
-                <img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA" class="cta-logo" style="filter: brightness(0) invert(1);">
+                <img src="https://www.njcaa.org/images/setup/site-logo.png" alt="RNCAA" class="cta-logo" style="filter: brightness(0) invert(1);">
                 <h3>WANT TO JOIN THE LEAGUE?</h3>
                 <p>Head Coach and Athletic Director positions are available. Join our Discord to apply!</p>
                 <div class="cta-buttons">
@@ -121,18 +121,17 @@
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-left">
-                <h3>NJCAA ROBLOX</h3>
-                <p class="footer-tagline">The Premier Roblox Football Experience</p>
+                <h3>RNCAA ROBLOX</h3>
+                <p class="footer-tagline">The Premier Roblox College Football Experience</p>
                 <div class="footer-social">
                     <a href="https://discord.gg/GNMD7wwvgW"><i class="fab fa-discord"></i></a>
                     <a href="#"><i class="fab fa-x-twitter"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
-                <p class="footer-founders">Founded by WRBEAST990, SaintJayden, Marcel & Grayson</p>
-                <p>©2026 NJCAA Roblox Football League.</p>
+                <p>©2026 RNCAA Roblox Football League.</p>
             </div>
             <div class="footer-logos">
-                <img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA" class="footer-logo">
+                <img src="https://www.njcaa.org/images/setup/site-logo.png" alt="RNCAA" class="footer-logo">
             </div>
         </div>
     </footer>
@@ -182,11 +181,11 @@
                     team.record = `${wins}-${losses}`;
                 });
                 
-                const eastTeams = teams.filter(t => t.conference === 'East Region');
-                const southTeams = teams.filter(t => t.conference === 'South Region');
+                const secTeams = teams.filter(t => t.conference === 'SEC');
+                const accTeams = teams.filter(t => t.conference === 'ACC');
                 
-                renderTeams('eastTeams', eastTeams);
-                renderTeams('southTeams', southTeams);
+                renderTeams('secTeams', secTeams);
+                renderTeams('accTeams', accTeams);
             } catch (error) {
                 console.error('Error loading teams:', error);
             }
@@ -195,7 +194,7 @@
         function renderTeams(containerId, teams) {
             const container = document.getElementById(containerId);
             if (teams.length === 0) {
-                container.innerHTML = '<p class="no-content">No teams in this region</p>';
+                container.innerHTML = '<p class="no-content">No teams in this conference</p>';
                 return;
             }
             

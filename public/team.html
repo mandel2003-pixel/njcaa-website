@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team | NJCAA Roblox Football</title>
+    <title>Team | RNCAA Roblox Football</title>
     <link rel="icon" type="image/png" href="https://www.njcaa.org/images/setup/site-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -641,7 +641,7 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-content">
-            <span class="top-bar-logo">NJCAA ROBLOX</span>
+            <span class="top-bar-logo">RNCAA ROBLOX</span>
             <nav class="top-bar-nav">
                 <a href="/">Home</a>
                 <a href="/teams.html">Programs</a>
@@ -655,7 +655,7 @@
     <!-- Main Header -->
     <header class="main-header">
         <div class="header-content">
-            <a href="/"><img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA" class="main-logo"></a>
+            <a href="/"><img src="https://www.njcaa.org/images/setup/site-logo.png" alt="RNCAA" class="main-logo"></a>
             <nav class="main-nav">
                 <a href="/teams.html" class="nav-link active">PROGRAMS</a>
                 <a href="/championships.html" class="nav-link">CHAMPIONSHIPS</a>
@@ -678,13 +678,13 @@
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-brand">
-                <h3>NJCAA ROBLOX</h3>
-                <p>The Premier Roblox Football Experience</p>
+                <h3>RNCAA ROBLOX</h3>
+                <p>The Premier Roblox College Football Experience</p>
             </div>
-            <img src="https://www.njcaa.org/images/setup/site-logo.png" alt="NJCAA" class="footer-logo">
+            <img src="https://www.njcaa.org/images/setup/site-logo.png" alt="RNCAA" class="footer-logo">
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 NJCAA Roblox Football League • Founded by WRBEAST990, SaintJayden, Marcel & Grayson</p>
+            <p>&copy; 2026 RNCAA Roblox Football League</p>
         </div>
     </footer>
 
@@ -724,7 +724,7 @@
                 });
 
                 renderTeam(team, wins, losses);
-                document.title = `${team.name} | NJCAA Roblox Football`;
+                document.title = `${team.name} | RNCAA Roblox Football`;
             } catch (error) {
                 console.error('Error loading team:', error);
                 showNotFound();
@@ -733,7 +733,7 @@
 
         function renderTeam(team, wins, losses) {
             const initials = team.abbreviation || team.name.split(' ').map(w => w[0]).join('').substring(0, 2);
-            const regionClass = team.conference?.includes('East') ? 'East' : 'South';
+            const regionClass = team.conference === 'SEC' ? 'SEC' : 'ACC';
             const hasAD = team.athleticDirector && team.athleticDirector.trim() !== '';
             const hasHC = team.headCoach && team.headCoach.trim() !== '';
             
@@ -746,8 +746,8 @@
                         </div>
                         <div class="team-hero-info">
                             <span class="team-region-badge">
-                                <i class="fas fa-${regionClass === 'East' ? 'compass' : 'sun'}"></i>
-                                ${team.conference || 'NJCAA'}
+                                <i class="fas fa-${regionClass === 'SEC' ? 'shield-alt' : 'star'}"></i>
+                                ${team.conference || 'RNCAA'}
                             </span>
                             <h1 class="team-name-large">${team.name}</h1>
                             ${team.nickname ? `<p class="team-nickname-large">${team.nickname}</p>` : ''}

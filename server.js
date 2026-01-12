@@ -10,10 +10,13 @@ const { v4: uuidv4 } = require('uuid');
 const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 
 // ============================================
-// DISCORD BOT FOR POSTING ARTICLES
+// DISCORD BOT FOR POSTING ARTICLES & ROLE CHECKING
 // ============================================
 const discordClient = new Client({
-    intents: [GatewayIntentBits.Guilds]
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers // Required for fetching member roles
+    ]
 });
 
 let discordReady = false;
@@ -717,6 +720,143 @@ app.post('/api/admin/upload', requireAdmin, upload.single('file'), (req, res) =>
 
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// ============================================
+// ROBLOX INTEGRATION - GET TEAM FROM DISCORD
+// ============================================
+
+// Team role mappings (Discord role name -> Team name)
+const TEAM_ROLE_MAPPINGS = {
+    'Ole Miss Rebels': 'Ole Miss Rebels',
+    'Vanderbilt Commodores': 'Vanderbilt Commodores',
+    'Texas A&M': 'Texas A&M',
+    'SMU Mustangs': 'SMU Mustangs',
+    'Boston College Eagles': 'Boston College Eagles',
+    'Wake Forest Demon Deacons': 'Wake Forest Demon Deacons',
+    // Add any role name variations here
+    'Ole Miss': 'Ole Miss Rebels',
+    'Vanderbilt': 'Vanderbilt Commodores',
+    'TAMU': 'Texas A&M',
+    'SMU': 'SMU Mustangs',
+    'Boston College': 'Boston College Eagles',
+    'Wake Forest': 'Wake Forest Demon Deacons',
+};
+
+// Get team from Discord user ID (for Roblox integration)
+app.get('/api/roblox/team/:discordId', async (req, res) => {
+    try {
+        const discordId = req.params.discordId;
+        
+        if (!discordReady) {
+            return res.status(503).json({ error: 'Discord bot not ready', team: 'Free Agent' });
+        }
+        
+        const guild = discordClient.guilds.cache.get(process.env.DISCORD_GUILD_ID);
+        if (!guild) {
+            return res.status(404).json({ error: 'Guild not found', team: 'Free Agent' });
+        }
+        
+        // Fetch member from Discord
+        let member;
+        try {
+            member = await guild.members.fetch(discordId);
+        } catch (e) {
+            return res.json({ team: 'Free Agent', found: false });
+        }
+        
+        // Check their roles for team membership
+        let playerTeam = 'Free Agent';
+        
+        for (const [roleId, role] of member.roles.cache) {
+            const roleName = role.name;
+            // Check if role matches any team
+            for (const [rolePattern, teamName] of Object.entries(TEAM_ROLE_MAPPINGS)) {
+                if (roleName.toLowerCase().includes(rolePattern.toLowerCase())) {
+                    playerTeam = teamName;
+                    break;
+                }
+            }
+            if (playerTeam !== 'Free Agent') break;
+        }
+        
+        res.json({ 
+            team: playerTeam, 
+            found: true,
+            username: member.user.username
+        });
+        
+    } catch (error) {
+        console.error('Error fetching Discord team:', error);
+        res.status(500).json({ error: 'Failed to fetch team', team: 'Free Agent' });
+    }
+});
+
+// Get team from Roblox user ID (uses Bloxlink)
+app.get('/api/roblox/team-by-roblox/:robloxId', async (req, res) => {
+    try {
+        const robloxId = req.params.robloxId;
+        
+        // Use Bloxlink API to get Discord ID from Roblox ID
+        const bloxlinkResponse = await fetch(`https://api.blox.link/v4/public/guilds/${process.env.DISCORD_GUILD_ID}/roblox-to-discord/${robloxId}`, {
+            headers: {
+                'Authorization': process.env.BLOXLINK_API_KEY || ''
+            }
+        });
+        
+        if (!bloxlinkResponse.ok) {
+            return res.json({ team: 'Free Agent', linked: false });
+        }
+        
+        const bloxlinkData = await bloxlinkResponse.json();
+        const discordId = bloxlinkData.discordIDs?.[0];
+        
+        if (!discordId) {
+            return res.json({ team: 'Free Agent', linked: false });
+        }
+        
+        // Now get their team from Discord roles
+        if (!discordReady) {
+            return res.json({ team: 'Free Agent', linked: true, error: 'Bot not ready' });
+        }
+        
+        const guild = discordClient.guilds.cache.get(process.env.DISCORD_GUILD_ID);
+        if (!guild) {
+            return res.json({ team: 'Free Agent', linked: true, error: 'Guild not found' });
+        }
+        
+        let member;
+        try {
+            member = await guild.members.fetch(discordId);
+        } catch (e) {
+            return res.json({ team: 'Free Agent', linked: true, error: 'Member not in server' });
+        }
+        
+        // Check their roles for team membership
+        let playerTeam = 'Free Agent';
+        
+        for (const [roleId, role] of member.roles.cache) {
+            const roleName = role.name;
+            for (const [rolePattern, teamName] of Object.entries(TEAM_ROLE_MAPPINGS)) {
+                if (roleName.toLowerCase().includes(rolePattern.toLowerCase())) {
+                    playerTeam = teamName;
+                    break;
+                }
+            }
+            if (playerTeam !== 'Free Agent') break;
+        }
+        
+        res.json({ 
+            team: playerTeam, 
+            linked: true,
+            discordId: discordId,
+            username: member.user.username
+        });
+        
+    } catch (error) {
+        console.error('Error fetching team by Roblox ID:', error);
+        res.json({ team: 'Free Agent', linked: false, error: error.message });
+    }
 });
 
 // ============================================
